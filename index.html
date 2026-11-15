@@ -83,6 +83,22 @@
       background: #FFFFFF;
     }
 
+    /* Fix iPadOS / Safari intrinsic width on native date & time inputs */
+    input[type="date"],
+    input[type="time"] {
+      -webkit-appearance: none;
+      appearance: none;
+      min-width: 0 !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      box-sizing: border-box;
+      display: block;
+    }
+    input[type="date"]::-webkit-date-and-time-value,
+    input[type="time"]::-webkit-date-and-time-value {
+      text-align: left;
+    }
+
     .form-section-title {
       font-size: 0.72rem;
       letter-spacing: 0.08em;
@@ -228,7 +244,7 @@
             Welcome to Designer Hub!
           </h1>
           <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            An all-in-one internal platform for generating customer emails, CF ticket notes, and Design Live documentation, with quick access to regional market directories and brand guidelines.
+            An all-in-one internal platform for generating customer emails, CF ticket notes, and Design Live documentation, with quick access to regional market directories, a time zone converter, and brand guidelines.
           </p>
         </div>
 
@@ -320,7 +336,7 @@
               </div>
               <div>
                 <h3 class="text-sm font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Time Zone Converter</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Convert Design Live appointments and support hours effortlessly across PH, US, CA, UK, IE, SG, AU, and NZ.</p>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Convert times and schedules effortlessly across PH, US, CA, UK, IE, SG, AU, and NZ.</p>
               </div>
             </div>
             <div class="flex items-center gap-1 text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">
@@ -1127,7 +1143,7 @@
 
           <!-- Source Region, Date & Time Inputs -->
           <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5 items-end">
-            <div class="md:col-span-5">
+            <div class="min-w-0 md:col-span-12 xl:col-span-4">
               <label for="tzSourceSelect" class="form-section-title block mb-1.5 text-[#0456A2]">From Time Zone / Locale</label>
               <div class="relative">
                 <select 
@@ -1152,27 +1168,30 @@
               </div>
             </div>
 
-            <div class="md:col-span-3">
+            <div class="min-w-0 md:col-span-5 xl:col-span-3">
               <label for="tzDateInput" class="form-section-title block mb-1.5">Date</label>
               <input 
                 type="date" 
                 id="tzDateInput" 
-                class="soft-input w-full px-3.5 py-2.5 font-semibold text-slate-800 cursor-pointer"
+                class="soft-input w-full min-w-0 px-3 py-2.5 font-semibold text-slate-800 cursor-pointer"
               />
             </div>
 
-            <div class="md:col-span-2">
+            <div class="min-w-0 md:col-span-4 xl:col-span-3">
               <label for="tzTimeInput" class="form-section-title block mb-1.5">Time</label>
               <input 
                 type="time" 
                 id="tzTimeInput" 
-                class="soft-input w-full px-3.5 py-2.5 font-semibold text-slate-800 cursor-pointer"
+                class="soft-input w-full min-w-0 px-3 py-2.5 font-semibold text-slate-800 cursor-pointer"
               />
             </div>
 
-            <div class="md:col-span-2 flex items-center gap-1.5">
-              <button type="button" onclick="adjustTzHours(-1)" class="flex-1 py-2.5 rounded-xl bg-[#F4F9FE] hover:bg-[#E1EFFD] text-[#0456A2] border border-[#CEE4FA] text-xs font-bold transition-colors cursor-pointer" title="Subtract 1 Hour">-1 hr</button>
-              <button type="button" onclick="adjustTzHours(1)" class="flex-1 py-2.5 rounded-xl bg-[#F4F9FE] hover:bg-[#E1EFFD] text-[#0456A2] border border-[#CEE4FA] text-xs font-bold transition-colors cursor-pointer" title="Add 1 Hour">+1 hr</button>
+            <div class="min-w-0 md:col-span-3 xl:col-span-2">
+              <span class="form-section-title block mb-1.5 md:invisible">Quick Shift</span>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="adjustTzHours(-1)" class="w-full py-2.5 px-2 rounded-xl bg-[#F4F9FE] hover:bg-[#E1EFFD] text-[#0456A2] border border-[#CEE4FA] text-xs font-bold transition-colors cursor-pointer whitespace-nowrap" title="Subtract 1 Hour">-1 hr</button>
+                <button type="button" onclick="adjustTzHours(1)" class="w-full py-2.5 px-2 rounded-xl bg-[#F4F9FE] hover:bg-[#E1EFFD] text-[#0456A2] border border-[#CEE4FA] text-xs font-bold transition-colors cursor-pointer whitespace-nowrap" title="Add 1 Hour">+1 hr</button>
+              </div>
             </div>
           </div>
         </div>
