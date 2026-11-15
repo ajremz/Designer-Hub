@@ -1,0 +1,15 @@
+{
+  "name": "Designer Hub",
+  "short_name": "Designer Hub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E1EFFC",
+  "theme_color": "#0456A2",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/1055/1055666.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
