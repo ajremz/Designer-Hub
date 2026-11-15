@@ -1,0 +1,2495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designer Hub</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-sky-start: #E1EFFC;
+      --bg-sky-mid: #EBF4FD;
+      --bg-sky-end: #D4E8FA;
+      --card-white: #FFFFFF;
+      --brand-blue: #3A8BDA;
+      --brand-dark-blue: #0456A2;
+      --brand-orange: #F19914;
+      --brand-magenta: #DD3884;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 10% 20%, #E3F1FD 0%, #EAF4FE 45%, #D7EAFC 95%);
+      min-height: 100vh;
+      color: #334155;
+    }
+
+    /* Soft Neumorphic / Glass Elevation Shadows inspired by the UI screenshot */
+    .soft-card {
+      background-color: #FFFFFF;
+      border-radius: 22px;
+      box-shadow: 0 14px 34px -6px rgba(58, 139, 218, 0.12), 
+                  0 4px 14px -3px rgba(58, 139, 218, 0.06);
+      border: 1px solid rgba(226, 238, 252, 0.9);
+    }
+
+    .soft-card-subtle {
+      background: #F6FAFE;
+      border-radius: 16px;
+      border: 1px solid #E2EDFA;
+    }
+
+    .sidebar-container {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      border-right: 1px solid rgba(210, 230, 250, 0.7);
+    }
+
+    .nav-icon-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748B;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav-icon-btn.active, .nav-icon-btn:hover {
+      background-color: #FFFFFF;
+      color: #0456A2;
+      box-shadow: 0 4px 12px rgba(58, 139, 218, 0.18);
+    }
+
+    /* Input Styling */
+    .soft-input {
+      background: #FFFFFF;
+      border: 1px solid #D5E4F5;
+      border-radius: 12px;
+      color: #1E293B;
+      transition: all 0.2s ease;
+      font-size: 0.84rem;
+    }
+    .soft-input:focus {
+      outline: none;
+      border-color: #3A8BDA;
+      box-shadow: 0 0 0 3px rgba(58, 139, 218, 0.15);
+      background: #FFFFFF;
+    }
+
+    .form-section-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #7C98B6;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #0456A2 0%, #3A8BDA 100%);
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px -3px rgba(4, 86, 162, 0.35);
+      transition: all 0.2s ease;
+    }
+    .primary-btn:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px -3px rgba(4, 86, 162, 0.45);
+    }
+    .primary-btn:active {
+      transform: translateY(0);
+    }
+
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Pill badge */
+    .badge-pill {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body class="p-3 sm:p-5 md:p-8 flex items-center justify-center">
+
+  <!-- Main App Shell -->
+  <div class="w-full max-w-7xl soft-card overflow-hidden flex flex-col md:flex-row min-h-[780px]">
+    
+    <!-- Left Iconic Slim Sidebar (matching the screenshot's left rail) -->
+    <aside class="sidebar-container w-full md:w-20 py-4 px-3 md:py-6 flex flex-row md:flex-col items-center justify-between border-b md:border-b-0 md:border-r shrink-0">
+      <div class="flex flex-row md:flex-col items-center gap-4 md:gap-6">
+        <!-- Avatar profile badge with user icon -->
+        <div class="relative">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#3A8BDA] to-[#0456A2] flex items-center justify-center text-white shadow-sm ring-2 ring-white">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </div>
+          <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full"></span>
+        </div>
+
+        <!-- Navigation Icons -->
+        <div class="flex flex-row md:flex-col gap-2.5">
+          <!-- Logo / Brand symbol: Email Configuration -->
+          <button type="button" id="tabEmailBtn" class="nav-icon-btn active" title="Email Configuration">
+            <svg class="w-5 h-5 text-[#0456A2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </button>
+          
+          <!-- CF Note Configuration Tab Button -->
+          <button type="button" id="tabCfBtn" class="nav-icon-btn" title="CF Note Configuration">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </button>
+
+          <!-- Tab 3: Design Live Documentation Button -->
+          <button type="button" id="tabDlBtn" class="nav-icon-btn" title="Design Live Documentation">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </button>
+
+          <!-- Tab 4: Market Directory Button -->
+          <button type="button" id="tabMarketBtn" class="nav-icon-btn" title="Market Directory">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </button>
+
+          <!-- Tab 5: Brand Guidelines Button -->
+          <button type="button" id="tabBrandBtn" class="nav-icon-btn" title="Brand Guidelines">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar Bottom Info Badge -->
+      <div class="hidden md:flex flex-col items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#3A8BDA]"></span>
+        <span class="w-2 h-2 rounded-full bg-[#DD3884]"></span>
+        <span class="w-2 h-2 rounded-full bg-[#F19914]"></span>
+      </div>
+    </aside>
+
+    <!-- Main Content Shell -->
+    <main class="flex-1 p-4 sm:p-6 md:p-7 flex flex-col gap-5 bg-gradient-to-br from-[#F7FBFF] to-[#EDF5FD] overflow-y-auto">
+      
+      <!-- Top Header Pill Bar -->
+      <header class="bg-white/90 backdrop-blur-sm rounded-full px-5 py-2.5 shadow-[0_6px_20px_rgba(58,139,218,0.08)] border border-[#E2EEFA] flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3 flex-1 min-w-0">
+          <div class="w-8 h-8 rounded-full bg-[#EBF4FD] text-[#0456A2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="portalTitleInput" 
+            value="Designer Hub" 
+            readonly 
+            class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none w-full truncate"
+          />
+        </div>
+      </header>
+
+      <!-- Main Layout: Form (Left) & Realtime Output (Right) -->
+      <div id="generatorWorkspace" class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 items-stretch">
+        
+        <!-- Form Inputs Card -->
+        <div class="lg:col-span-6 bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] flex flex-col justify-between space-y-5">
+          
+          <!-- TAB 1: EMAIL CONFIGURATION FORM -->
+          <div id="emailFormSection" class="space-y-4">
+            <div class="flex items-center justify-between pb-3 border-b border-[#EDF4FC]">
+              <div>
+                <h2 class="text-base font-bold text-slate-800">Email Configuration</h2>
+                <p class="text-xs text-slate-400">Fill in customer details & document options</p>
+              </div>
+              <button 
+                type="button" 
+                id="resetBtn" 
+                class="px-3 py-1 rounded-full text-xs font-semibold text-slate-600 hover:text-[#0456A2] bg-[#F1F7FE] hover:bg-[#E1EFFD] border border-[#DCEBFC] transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
+                title="Reset Email Configuration"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Reset
+              </button>
+            </div>
+
+            <!-- Email Template Dropdown Selector -->
+            <div>
+              <label for="templateSelect" class="form-section-title block mb-1.5 text-[#0456A2]">Select Email Template</label>
+              <div class="relative">
+                <select 
+                  id="templateSelect" 
+                  class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-bold text-slate-800 bg-[#F4F9FE] border-[#CDE1F7] cursor-pointer"
+                >
+                  <option value="fresh">Fresh Ticket</option>
+                  <option value="revision">Revision</option>
+                  <option value="missing">Missing Information</option>
+                  <option value="free">Free Template</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#3A8BDA]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Customer & Product -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label for="customerName" class="form-section-title block mb-1.5">Customer Name</label>
+                <input 
+                  type="text" 
+                  id="customerName" 
+                  placeholder="e.g. Eleanor Vance" 
+                  class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-medium"
+                />
+              </div>
+
+              <div id="productFieldWrapper">
+                <label for="productName" class="form-section-title block mb-1.5">Product</label>
+                <input 
+                  type="text" 
+                  id="productName" 
+                  placeholder="e.g. Matte Business Cards" 
+                  class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-medium"
+                />
+              </div>
+            </div>
+
+            <!-- Revision Count & Location -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div id="revisionFieldWrapper">
+                <div class="flex items-center justify-between mb-1.5">
+                  <label for="revisionCount" class="form-section-title">Revision Count</label>
+                </div>
+                <input 
+                  type="number" 
+                  id="revisionCount" 
+                  min="0" 
+                  max="3" 
+                  value="3" 
+                  placeholder="3" 
+                  class="soft-input w-full px-3.5 py-2.5 font-medium"
+                />
+              </div>
+
+              <div id="locationFieldWrapper">
+                <label for="locationSelect" class="form-section-title block mb-1.5">Support Region</label>
+                <div class="relative">
+                  <select 
+                    id="locationSelect" 
+                    class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-semibold text-slate-700 bg-white cursor-pointer"
+                  >
+                    <option value="US">US - United States</option>
+                    <option value="UK">UK - United Kingdom</option>
+                    <option value="IE">IE - Ireland</option>
+                    <option value="NZ">NZ - New Zealand</option>
+                    <option value="SG">SG - Singapore</option>
+                    <option value="AU">AU - Australia</option>
+                    <option value="CA">CA - Canada</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#3A8BDA]">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Notes (For Fresh Ticket & Revision - hidden by default until + Add Note is clicked) -->
+            <div id="notesFieldWrapper">
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="notes" class="form-section-title">Additional Notes</label>
+                <button 
+                  type="button" 
+                  id="toggleNotesBtn" 
+                  class="px-3 py-1 bg-[#EBF4FD] hover:bg-[#DDF0FD] text-[#0456A2] font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer border border-[#CEE4FA]"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
+                  </svg>
+                  <span id="toggleNotesBtnText">Add Note</span>
+                </button>
+              </div>
+              <div id="notesInputContainer" class="hidden">
+                <textarea 
+                  id="notes" 
+                  rows="2" 
+                  placeholder="e.g. Updated logo vector and color grading as requested."
+                  class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 resize-none leading-relaxed"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Missing Information Bullet Items -->
+            <div id="missingInfoWrapper" class="hidden">
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="missingInfoText" class="form-section-title text-[#DD3884]">Missing Information Items</label>
+                <span class="text-[10px] text-slate-400">One item per line (auto bulleted)</span>
+              </div>
+              <textarea 
+                id="missingInfoText" 
+                rows="4" 
+                placeholder="High-resolution vectorized company logo (.AI or .SVG)&#10;Exact dimension or bleed requirements&#10;Preferred brand color HEX or Pantone codes"
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 resize-none leading-relaxed font-medium"
+              ></textarea>
+            </div>
+
+            <!-- Free Template Custom Message -->
+            <div id="freeMessageWrapper" class="hidden">
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="freeMessageText" class="form-section-title text-[#0456A2]">Message</label>
+                <span class="text-[10px] text-slate-400">Custom body content</span>
+              </div>
+              <textarea 
+                id="freeMessageText" 
+                rows="5" 
+                placeholder="Enter your custom message for the customer here..."
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 resize-none leading-relaxed font-medium"
+              ></textarea>
+            </div>
+
+            <!-- Documents Section with Dynamic Multiple Options -->
+            <div id="documentsFieldWrapper" class="pt-2">
+              <div class="flex items-center justify-between mb-2">
+                <div>
+                  <span class="form-section-title">Project Documents</span>
+                  <span class="block text-[11px] text-slate-400 mt-0.5">Multi-entry auto numbers as Option 1, Option 2</span>
+                </div>
+                <button 
+                  type="button" 
+                  id="addDocBtn" 
+                  class="px-3 py-1.5 bg-[#EBF4FD] hover:bg-[#DDF0FD] text-[#0456A2] font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer border border-[#CEE4FA]"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
+                  </svg>
+                  Add Option
+                </button>
+              </div>
+
+              <!-- List of document rows -->
+              <div id="docListContainer" class="space-y-2.5 max-h-52 overflow-y-auto pr-1">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: CF NOTES FORM -->
+          <div id="cfFormSection" class="space-y-4 hidden">
+            <div class="flex items-center justify-between pb-3 border-b border-[#EDF4FC]">
+              <div>
+                <h2 class="text-base font-bold text-slate-800">CF Note Configuration</h2>
+                <p class="text-xs text-slate-400">Internal handover, revisions, schedule & escalations</p>
+              </div>
+              <button 
+                type="button" 
+                id="cfResetBtn" 
+                class="px-3 py-1 rounded-full text-xs font-semibold text-slate-600 hover:text-[#0456A2] bg-[#F1F7FE] hover:bg-[#E1EFFD] border border-[#DCEBFC] transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
+                title="Reset CF Note Configuration"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Reset
+              </button>
+            </div>
+
+            <!-- CF Ticket Action Dropdown -->
+            <div>
+              <label for="cfTicketSelect" class="form-section-title block mb-1.5 text-[#B45309]">Select Ticket Action</label>
+              <div class="relative">
+                <select 
+                  id="cfTicketSelect" 
+                  class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-bold text-slate-800 bg-[#FFFDF5] border-[#FDE68A] cursor-pointer"
+                >
+                  <option value="complete">Order Complete</option>
+                  <option value="reschedule">Reschedule</option>
+                  <option value="revision">Revision</option>
+                  <option value="handover">Handover</option>
+                  <option value="escalate">Escalate</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#B45309]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Optional detailed template toggle for Reschedule / Handover / Escalate -->
+            <div id="cfFullDetailsToggleWrapper" class="hidden">
+              <label class="flex items-center gap-2.5 p-2.5 bg-[#F8FBFE] border border-[#D5E5F7] rounded-xl cursor-pointer hover:bg-white transition-colors">
+                <input type="checkbox" id="cfFullDetailsCheckbox" class="w-4 h-4 accent-[#0456A2] rounded cursor-pointer">
+                <div class="flex flex-col">
+                  <span class="text-xs font-bold text-slate-800">Include full design details</span>
+                  <span class="text-[11px] text-slate-400">Add Product, Documents, Assets, Software, and Drive link</span>
+                </div>
+              </label>
+            </div>
+
+            <!-- Reason Field (for Handover / Escalate) -->
+            <div id="cfReasonWrapper" class="hidden">
+              <label for="cfReasonInput" class="form-section-title block mb-1.5 text-[#DD3884]">Reason</label>
+              <input 
+                type="text" 
+                id="cfReasonInput" 
+                placeholder="e.g. Shift ended, specialized vector illustration needed, complex logo recreation..." 
+                class="soft-input w-full px-3.5 py-2.5 font-medium placeholder-slate-400"
+              />
+            </div>
+
+            <!-- Product Field (for Complete / Revision) -->
+            <div id="cfProductWrapper">
+              <label for="cfProductInput" class="form-section-title block mb-1.5">Product</label>
+              <input 
+                type="text" 
+                id="cfProductInput" 
+                placeholder="e.g. Standard Business Cards / Tri-fold Brochure" 
+                class="soft-input w-full px-3.5 py-2.5 font-medium placeholder-slate-400"
+              />
+            </div>
+
+            <!-- CF Notes Field -->
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="cfNotesInput" class="form-section-title">Note/s (One per line)</label>
+                <span class="text-[10px] text-slate-400 font-medium">Auto-bulleted (N/A if empty)</span>
+              </div>
+              <textarea 
+                id="cfNotesInput" 
+                rows="2" 
+                placeholder="Adjusted bleed margins to 3mm&#10;Corrected typography hierarchy&#10;Added QR code"
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 resize-none leading-relaxed font-medium"
+              ></textarea>
+            </div>
+
+            <!-- CF Documents Dynamic List (For Complete & Revision) -->
+            <div id="cfDocumentsWrapper" class="pt-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="form-section-title">Document/s Saved As</span>
+                <button 
+                  type="button" 
+                  id="cfAddDocBtn" 
+                  class="px-3 py-1 bg-[#EBF4FD] hover:bg-[#DDF0FD] text-[#0456A2] font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer border border-[#CEE4FA]"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
+                  </svg>
+                  Add Document
+                </button>
+              </div>
+              <div id="cfDocListContainer" class="space-y-2 max-h-40 overflow-y-auto pr-1">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <!-- Assets & Software (For Complete & Revision) -->
+            <div id="cfAssetsWrapper" class="space-y-3 pt-1 border-t border-[#EDF4FC]">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label for="cfAdobeStockInput" class="form-section-title block mb-1">Adobe Stock Used</label>
+                  <input 
+                    type="text" 
+                    id="cfAdobeStockInput" 
+                    placeholder="e.g. #48291038 or N/A" 
+                    class="soft-input w-full px-3 py-2 text-xs font-medium placeholder-slate-400"
+                  />
+                </div>
+                <div>
+                  <label for="cfFontsInput" class="form-section-title block mb-1">Fonts Used</label>
+                  <input 
+                    type="text" 
+                    id="cfFontsInput" 
+                    placeholder="e.g. Helvetica Neue Bold, Inter Regular" 
+                    class="soft-input w-full px-3 py-2 text-xs font-medium placeholder-slate-400"
+                  />
+                </div>
+              </div>
+
+              <!-- Software Checkboxes -->
+              <div>
+                <label class="form-section-title block mb-1.5">Software Used</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700">
+                    <input type="checkbox" value="Studio" class="cf-software-cb accent-[#3A8BDA] rounded" checked>
+                    <span>Studio</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700">
+                    <input type="checkbox" value="Illustrator" class="cf-software-cb accent-[#3A8BDA] rounded">
+                    <span>Illustrator</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700">
+                    <input type="checkbox" value="Photoshop" class="cf-software-cb accent-[#3A8BDA] rounded">
+                    <span>Photoshop</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Google Drive Link -->
+              <div>
+                <label for="cfDriveLinkInput" class="form-section-title block mb-1">Google Drive Link</label>
+                <input 
+                  type="text" 
+                  id="cfDriveLinkInput" 
+                  placeholder="https://drive.google.com/..." 
+                  class="soft-input w-full px-3 py-2 text-xs font-medium placeholder-slate-400 font-mono-code"
+                />
+              </div>
+
+              <!-- Hashtags Checkboxes -->
+              <div>
+                <label class="form-section-title block mb-1.5">Hashtags</label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700 font-mono-code">
+                    <input type="checkbox" value="#AiEdit" class="cf-hashtag-cb accent-[#3A8BDA] rounded">
+                    <span>#AiEdit</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700 font-mono-code">
+                    <input type="checkbox" value="#AiRecreation" class="cf-hashtag-cb accent-[#3A8BDA] rounded">
+                    <span>#AiRecreation</span>
+                  </label>
+                  <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700 font-mono-code">
+                    <input type="checkbox" value="#GeminiGemUsed" class="cf-hashtag-cb accent-[#3A8BDA] rounded">
+                    <span>#GeminiGemUsed</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TAB 3: DESIGN LIVE DOCUMENTATION FORM -->
+          <div id="dlFormSection" class="space-y-4 hidden">
+            <div class="flex items-center justify-between pb-3 border-b border-[#EDF4FC]">
+              <div>
+                <h2 class="text-base font-bold text-slate-800">Design Live Documentation</h2>
+                <p class="text-xs text-slate-400">Live consultation, session records & design delivery</p>
+              </div>
+              <button 
+                type="button" 
+                id="dlResetBtn" 
+                class="px-3 py-1 rounded-full text-xs font-semibold text-slate-600 hover:text-[#0456A2] bg-[#F1F7FE] hover:bg-[#E1EFFD] border border-[#DCEBFC] transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
+                title="Reset Design Live Documentation"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Reset
+              </button>
+            </div>
+
+            <!-- CF Status Dropdown -->
+            <div>
+              <label for="dlStatusSelect" class="form-section-title block mb-1.5 text-[#0369A1]">CF Status</label>
+              <div class="relative">
+                <select 
+                  id="dlStatusSelect" 
+                  class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-bold text-slate-800 bg-[#F0F9FF] border-[#BAE6FD] cursor-pointer"
+                >
+                  <option value="#Completed">#Completed</option>
+                  <option value="#Cancelled">#Cancelled</option>
+                  <option value="#No-Show-DesignNotDelivered">#No-Show-DesignNotDelivered</option>
+                  <option value="#No-Show-DesignDelivered">#No-Show-DesignDelivered</option>
+                  <option value="#Extended-Session">#Extended-Session</option>
+                  <option value="#Rescheduled">#Rescheduled</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#0369A1]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prep Work & Post Work Radios -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div class="p-3 rounded-2xl bg-[#F8FBFE] border border-[#E2EDFA]">
+                <span class="form-section-title block mb-2">Prep Work</span>
+                <div class="flex items-center gap-4 text-xs font-semibold text-slate-700">
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="radio" name="dlPrepWork" value="Yes" class="accent-[#3A8BDA]">
+                    <span>Yes</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="radio" name="dlPrepWork" value="No" class="accent-[#3A8BDA]" checked>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-2xl bg-[#F8FBFE] border border-[#E2EDFA]">
+                <span class="form-section-title block mb-2">Post Work</span>
+                <div class="flex items-center gap-4 text-xs font-semibold text-slate-700">
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="radio" name="dlPostWork" value="Yes" class="accent-[#3A8BDA]">
+                    <span>Yes</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="radio" name="dlPostWork" value="No" class="accent-[#3A8BDA]" checked>
+                    <span>No</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product -->
+            <div>
+              <label for="dlProductInput" class="form-section-title block mb-1.5">Product</label>
+              <input 
+                type="text" 
+                id="dlProductInput" 
+                placeholder="e.g. Standard Postcards" 
+                class="soft-input w-full px-3.5 py-2.5 font-medium placeholder-slate-400"
+              />
+            </div>
+
+            <!-- Assets Used -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label for="dlAdobeStockInput" class="form-section-title block mb-1">Adobe Stock Used</label>
+                <input 
+                  type="text" 
+                  id="dlAdobeStockInput" 
+                  placeholder="e.g. #304958102 or N/A" 
+                  class="soft-input w-full px-3 py-2 text-xs font-medium placeholder-slate-400"
+                />
+              </div>
+              <div>
+                <label for="dlFontsInput" class="form-section-title block mb-1">Fonts Used</label>
+                <input 
+                  type="text" 
+                  id="dlFontsInput" 
+                  placeholder="e.g. Montserrat Bold, Open Sans" 
+                  class="soft-input w-full px-3 py-2 text-xs font-medium placeholder-slate-400"
+                />
+              </div>
+            </div>
+
+            <!-- Software Used -->
+            <div>
+              <label class="form-section-title block mb-1.5">Software Used</label>
+              <div class="grid grid-cols-3 gap-2">
+                <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700">
+                  <input type="checkbox" value="Studio" class="dl-software-cb accent-[#3A8BDA] rounded" checked>
+                  <span>Studio</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700">
+                  <input type="checkbox" value="Illustrator" class="dl-software-cb accent-[#3A8BDA] rounded">
+                  <span>Illustrator</span>
+                </label>
+                <label class="flex items-center gap-2 p-2 rounded-xl border border-[#E2EDFA] bg-[#F8FBFE] cursor-pointer hover:bg-white text-xs font-semibold text-slate-700">
+                  <input type="checkbox" value="Photoshop" class="dl-software-cb accent-[#3A8BDA] rounded">
+                  <span>Photoshop</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Document ID Section with dynamic + Add Document -->
+            <div class="pt-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="form-section-title">Document ID</span>
+                <button 
+                  type="button" 
+                  id="dlAddDocBtn" 
+                  class="px-3 py-1 bg-[#EBF4FD] hover:bg-[#DDF0FD] text-[#0456A2] font-bold text-xs rounded-xl flex items-center gap-1.5 transition-colors cursor-pointer border border-[#CEE4FA]"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"></path>
+                  </svg>
+                  Add Document
+                </button>
+              </div>
+              <div id="dlDocListContainer" class="space-y-2 max-h-40 overflow-y-auto pr-1">
+                <!-- Injected via JavaScript -->
+              </div>
+            </div>
+
+            <!-- About the Session -->
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label for="dlSessionNotesInput" class="form-section-title">About the Session</label>
+                <span class="text-[10px] text-slate-400 font-medium">Auto-bulleted (N/A if empty)</span>
+              </div>
+              <textarea 
+                id="dlSessionNotesInput" 
+                rows="2" 
+                placeholder="Customer requested layout adjustments&#10;Finalized typography hierarchy and proofed text"
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 resize-none leading-relaxed font-medium"
+              ></textarea>
+            </div>
+
+            <!-- Reference Links: Drive, Recording, Passcode -->
+            <div class="space-y-2.5 pt-1 border-t border-[#EDF4FC]">
+              <span class="form-section-title block">Reference Links</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div>
+                  <label for="dlDriveLinkInput" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1">Google Drive</label>
+                  <input 
+                    type="text" 
+                    id="dlDriveLinkInput" 
+                    placeholder="https://drive.google.com/..." 
+                    class="soft-input w-full px-3 py-1.5 text-xs font-medium placeholder-slate-400 font-mono-code"
+                  />
+                </div>
+                <div>
+                  <label for="dlRecordingLinkInput" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1">Recording Link</label>
+                  <input 
+                    type="text" 
+                    id="dlRecordingLinkInput" 
+                    placeholder="https://vistaprint.zoom.us/rec/..." 
+                    class="soft-input w-full px-3 py-1.5 text-xs font-medium placeholder-slate-400 font-mono-code"
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="dlPasscodeInput" class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1">Passcode (Explicit / Visible)</label>
+                <input 
+                  type="text" 
+                  id="dlPasscodeInput" 
+                  placeholder="e.g. D7$k9!wZ" 
+                  class="soft-input w-full px-3 py-1.5 text-xs font-medium placeholder-slate-400 font-mono-code"
+                />
+              </div>
+            </div>
+
+            <!-- Other Hashtags Dropdown -->
+            <div>
+              <label for="dlOtherHashtagsSelect" class="form-section-title block mb-1 text-[#3A8BDA]">Other Hashtags</label>
+              <div class="relative">
+                <select 
+                  id="dlOtherHashtagsSelect" 
+                  class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-bold text-slate-800 bg-[#F4F9FE] border-[#CDE1F7] cursor-pointer"
+                >
+                  <option value="#MinorOfferedMP">#MinorOfferedMP</option>
+                  <option value="#MajorOfferedMP">#MajorOfferedMP</option>
+                  <option value="#DidNotOfferMP">#DidNotOfferMP</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#3A8BDA]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Output & Preview Card -->
+        <div class="lg:col-span-6 bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] flex flex-col justify-between">
+          <div>
+            <!-- Header of card -->
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-[#EDF4FC]">
+              <div class="flex items-center gap-2.5">
+                <div id="outputCardIcon" class="w-7 h-7 rounded-lg bg-[#EBF5FE] text-[#0456A2] flex items-center justify-center font-bold text-xs">
+                  ✉
+                </div>
+                <div>
+                  <h2 id="outputCardTitle" class="text-base font-bold text-slate-800">Generated Email</h2>
+                  <p id="outputCardSubtitle" class="text-xs text-slate-400 hidden"></p>
+                </div>
+              </div>
+
+              <!-- Pill Copy Button with Brand Accent -->
+              <button 
+                type="button" 
+                id="copyBtn" 
+                class="primary-btn px-4 py-2 rounded-full font-bold text-xs flex items-center gap-2 cursor-pointer"
+              >
+                <svg id="copyIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                </svg>
+                <span id="copyBtnText">Copy Email</span>
+              </button>
+            </div>
+
+            <!-- Preview Box (Rich rendered container to show live hyperlinks and direct editing) -->
+            <div class="relative">
+              <div class="flex items-center justify-between mb-1.5 px-1">
+                <span class="text-[11px] font-medium text-slate-400">You can click directly inside the box below to customize text before copying</span>
+                <span class="badge-pill bg-[#F1F7FE] text-[#3A8BDA] border border-[#DCEBFC]">Editable</span>
+              </div>
+              <div 
+                id="outputPreview" 
+                contenteditable="true"
+                spellcheck="true"
+                class="w-full h-80 sm:h-[415px] p-4 rounded-2xl bg-[#F8FBFE] hover:bg-white focus:bg-white border border-[#DEEDFC] focus:border-[#3A8BDA] font-mono-code text-xs leading-relaxed text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#3A8BDA]/25 overflow-y-auto whitespace-pre-wrap transition-all cursor-text"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Bottom feedback toast -->
+          <div id="toastBox" class="mt-4 p-3 bg-[#EBF9F1] border border-[#C6EFD8] rounded-xl flex items-center justify-between text-xs text-[#0D6832] transition-all opacity-0 pointer-events-none">
+            <div class="flex items-center gap-2 font-semibold">
+              <svg class="w-4 h-4 text-[#10B981]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span id="toastMsg">Copied to clipboard!</span>
+            </div>
+            <span class="text-[11px] text-slate-500 font-medium">Ready for Notion / Mail</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- TAB 4: MARKET DIRECTORY WORKSPACE -->
+      <div id="marketDirectorySection" class="hidden flex-1 flex flex-col space-y-5">
+        <!-- Top Controls Card: Market Filter Pills & Search -->
+        <div class="bg-white rounded-3xl p-5 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-[#EDF4FC]">
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-slate-800">Market Directory</h2>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Quick-access regional phone numbers, support hours, and customer portal links</p>
+            </div>
+
+            <!-- Toast notification inline for Market Directory -->
+            <div id="marketToastBox" class="px-3.5 py-2 bg-[#EBF9F1] border border-[#C6EFD8] rounded-full flex items-center gap-2 text-xs text-[#0D6832] transition-all opacity-0 pointer-events-none">
+              <svg class="w-3.5 h-3.5 text-[#10B981] shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span id="marketToastMsg" class="font-semibold">Link copied to clipboard!</span>
+            </div>
+          </div>
+
+          <!-- Filter Pills + Search -->
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+            <!-- Region Pills -->
+            <div id="marketFilterPills" class="flex flex-wrap items-center gap-1.5">
+              <button type="button" data-market="ALL" class="market-pill active px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#0456A2] text-white shadow-sm">All</button>
+              <button type="button" data-market="US" class="market-pill px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]">US</button>
+              <button type="button" data-market="CA" class="market-pill px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]">CA</button>
+              <button type="button" data-market="AU" class="market-pill px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]">AU</button>
+              <button type="button" data-market="NZ" class="market-pill px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]">NZ</button>
+              <button type="button" data-market="UK" class="market-pill px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]">UK</button>
+              <button type="button" data-market="SG" class="market-pill px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]">SG</button>
+              <button type="button" data-market="IE" class="market-pill px-3 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]">IE</button>
+            </div>
+
+            <!-- Search -->
+            <div class="w-full lg:w-72">
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </span>
+                <input 
+                  type="text" 
+                  id="marketSearchInput" 
+                  placeholder="Filter links or region..." 
+                  class="soft-input w-full pl-8 pr-3 py-2 text-xs font-medium placeholder-slate-400"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Market Cards Grid -->
+        <div id="marketCardsGrid" class="grid grid-cols-1 xl:grid-cols-2 gap-5">
+          <!-- Injected dynamically via JavaScript -->
+        </div>
+      </div>
+
+      <!-- TAB 5: BRAND GUIDELINES WORKSPACE -->
+      <div id="brandGuidelinesSection" class="hidden flex-1 flex flex-col space-y-5">
+        <!-- Top Header & Search Filter Card -->
+        <div class="bg-white rounded-3xl p-5 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] space-y-4">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 class="text-base font-bold text-slate-800">Brand Guidelines</h2>
+              </div>
+              <p class="text-xs text-slate-400 mt-0.5">Official third-party logo usage, trademark rules, and brand asset kits</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <!-- Toast notification inline for Brand Guidelines -->
+              <div id="brandToastBox" class="px-3.5 py-2 bg-[#EBF9F1] border border-[#C6EFD8] rounded-full flex items-center gap-2 text-xs text-[#0D6832] transition-all opacity-0 pointer-events-none">
+                <svg class="w-3.5 h-3.5 text-[#10B981] shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span id="brandToastMsg" class="font-semibold">Guideline link copied!</span>
+              </div>
+
+              <!-- Search Input -->
+              <div class="relative w-full sm:w-72">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-[#3A8BDA]">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                  </svg>
+                </span>
+                <input 
+                  type="text" 
+                  id="brandSearchInput" 
+                  placeholder="Search platform (e.g. FB, Google, X)..." 
+                  class="soft-input w-full pl-9 pr-3 py-2 text-xs font-medium placeholder-slate-400"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Cards Grid -->
+        <div id="brandCardsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Injected dynamically via JavaScript -->
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    // Tab State: 'email', 'cf', 'dl', or 'market'
+    let activeTab = 'email';
+
+    // Regional Design Services URLs
+    const DASHBOARD_URLS = {
+      US: "https://www.vistaprint.com/graphic-design/dashboard",
+      CA: "https://www.vistaprint.ca/graphic-design/dashboard",
+      AU: "https://www.vistaprint.com.au/graphic-design/dashboard",
+      NZ: "https://www.vistaprint.co.nz/graphic-design/dashboard",
+      UK: "https://www.vistaprint.co.uk/graphic-design/dashboard",
+      SG: "https://www.vistaprint.sg/graphic-design/dashboard",
+      IE: "https://www.vistaprint.ie/graphic-design/dashboard"
+    };
+
+    // Region Support Contact Details
+    const CONTACT_DETAILS = {
+      US: "Phone: 1.866.207.4955\nMon – Fri 7:00 AM – 3:00 AM EST\nSat – Sun 8:00 AM – 8:00 PM EST",
+      UK: "Phone: 0800.028.6962\nMon – Sun 7:30 AM – 10:00 PM",
+      IE: "Phone: 1800 904 804\nMon – Sun 7:30 AM – 10:00 PM",
+      NZ: "Phone: 0800.222.062\nMon. - Fri. 10:00 AM - 12:00 AM\nSat. - Sun. 10:00 AM - 7:00 PM",
+      SG: "Phone: 1800.407.5624\nMon. - Fri. 5:00 AM - 7:00 PM\nSat. - Sun. 5:00 AM - 2:00 PM",
+      AU: "Phone: 1800.864.973\nMon. - Fri. 8:00 AM - 10:00 PM AST\nSat. - Sun. 8:00 AM – 5:00 PM AST",
+      CA: "Phone: 833.996.2067\nMon – Fri 7:00 AM – 3:00 AM EST\nSat – Sun 8:00 AM – 8:00 PM EST"
+    };
+
+    // State for shared dynamic documents (linked across Email Configuration, CF Notes & Design Live)
+    let sharedDocuments = [
+      { id: Date.now(), name: '', docId: '' }
+    ];
+
+    // Navigation Buttons
+    const tabEmailBtn = document.getElementById('tabEmailBtn');
+    const tabCfBtn = document.getElementById('tabCfBtn');
+    const tabDlBtn = document.getElementById('tabDlBtn');
+    const tabMarketBtn = document.getElementById('tabMarketBtn');
+    const tabBrandBtn = document.getElementById('tabBrandBtn');
+    const generatorWorkspace = document.getElementById('generatorWorkspace');
+    const marketDirectorySection = document.getElementById('marketDirectorySection');
+    const brandGuidelinesSection = document.getElementById('brandGuidelinesSection');
+    const emailFormSection = document.getElementById('emailFormSection');
+    const cfFormSection = document.getElementById('cfFormSection');
+    const dlFormSection = document.getElementById('dlFormSection');
+    const portalTitleInput = document.getElementById('portalTitleInput');
+
+    // Market Directory Data & Elements
+    const MARKET_DIRECTORY = [
+      {
+        code: 'US',
+        name: 'United States',
+        accent: '#0456A2',
+        phone: '1.866.207.4955',
+        hours: [
+          'Mon – Fri 7:00 AM – 3:00 AM EST',
+          'Sat – Sun 8:00 AM – 8:00 PM EST'
+        ],
+        links: [
+          { label: 'Projects', url: 'https://www.vistaprint.com/my-account/design/projects/' },
+          { label: 'Shopping Cart', url: 'https://www.vistaprint.com/c/' },
+          { label: 'Order History', url: 'https://www.vistaprint.com/oh/' },
+          { label: 'My Design Service', url: 'https://www.vistaprint.com/graphic-design/dashboard' },
+          { label: 'Design Services', url: 'https://www.vistaprint.com/design' },
+          { label: 'Logo', url: 'https://www.vistaprint.com/logo-design' },
+          { label: 'Design Reschedule Link', url: 'https://www.vistaprint.com/design/collaboration/<request-id>/delivery/1/appointment', isReschedule: true }
+        ]
+      },
+      {
+        code: 'CA',
+        name: 'Canada',
+        accent: '#DD3884',
+        phone: '833.996.2067',
+        hours: [
+          'Mon – Fri 7:00 AM – 3:00 AM EST',
+          'Sat – Sun 8:00 AM – 8:00 PM EST'
+        ],
+        links: [
+          { label: 'Projects', url: 'https://www.vistaprint.ca/my-account/design/projects/' },
+          { label: 'Shopping Cart', url: 'https://www.vistaprint.ca/c/' },
+          { label: 'Order History', url: 'https://www.vistaprint.ca/oh/' },
+          { label: 'My Design Service', url: 'https://www.vistaprint.ca/graphic-design/dashboard' },
+          { label: 'Design Services', url: 'https://www.vistaprint.ca/design' },
+          { label: 'Logo', url: 'https://www.vistaprint.ca/logo-design' },
+          { label: 'Design Reschedule Link', url: 'https://www.vistaprint.ca/design/collaboration/<request-id>/delivery/1/appointment', isReschedule: true }
+        ]
+      },
+      {
+        code: 'AU',
+        name: 'Australia',
+        accent: '#3A8BDA',
+        phone: '1800.864.973',
+        hours: [
+          'Mon. - Fri. 8:00 AM - 10:00 PM AST',
+          'Sat. - Sun. 8:00 AM – 5:00 PM AST'
+        ],
+        links: [
+          { label: 'Projects', url: 'https://www.vistaprint.com.au/my-account/design/projects/' },
+          { label: 'Shopping Cart', url: 'https://www.vistaprint.com.au/c/' },
+          { label: 'Order History', url: 'https://www.vistaprint.com.au/oh/' },
+          { label: 'My Design Service', url: 'https://www.vistaprint.com.au/graphic-design/dashboard' },
+          { label: 'Design Services', url: 'https://www.vistaprint.com.au/design' },
+          { label: 'Logo', url: 'https://www.vistaprint.com.au/logo-design' },
+          { label: 'Design Reschedule Link', url: 'https://www.vistaprint.com.au/design/collaboration/<request-id>/delivery/1/appointment', isReschedule: true }
+        ]
+      },
+      {
+        code: 'NZ',
+        name: 'New Zealand',
+        accent: '#0456A2',
+        phone: '0800.222.062',
+        hours: [
+          'Mon. - Fri. 10:00 AM - 12:00 AM',
+          'Sat. - Sun. 10:00 AM - 7:00 PM'
+        ],
+        links: [
+          { label: 'Projects', url: 'https://www.vistaprint.co.nz/my-account/design/projects/' },
+          { label: 'Shopping Cart', url: 'https://www.vistaprint.co.nz/c/' },
+          { label: 'Order History', url: 'https://www.vistaprint.co.nz/oh/' },
+          { label: 'My Design Service', url: 'https://www.vistaprint.co.nz/graphic-design/dashboard' },
+          { label: 'Design Services', url: 'https://www.vistaprint.co.nz/design' },
+          { label: 'Logo', url: 'https://www.vistaprint.co.nz/logo-design' },
+          { label: 'Design Reschedule Link', url: 'https://www.vistaprint.co.nz/design/collaboration/<request-id>/delivery/1/appointment', isReschedule: true }
+        ]
+      },
+      {
+        code: 'UK',
+        name: 'United Kingdom',
+        accent: '#C60062',
+        phone: '0800.028.6962',
+        hours: [
+          'Mon – Sun 7:30 AM – 10:00 PM'
+        ],
+        links: [
+          { label: 'Projects', url: 'https://www.vistaprint.co.uk/my-account/design/projects/' },
+          { label: 'Shopping Cart', url: 'https://www.vistaprint.co.uk/c/' },
+          { label: 'Order History', url: 'https://www.vistaprint.co.uk/oh/' },
+          { label: 'My Design Service', url: 'https://www.vistaprint.co.uk/graphic-design/dashboard' },
+          { label: 'Design Services', url: 'https://www.vistaprint.co.uk/design' },
+          { label: 'Logo', url: 'https://www.vistaprint.co.uk/logo-design' },
+          { label: 'Design Reschedule Link', url: 'https://www.vistaprint.co.uk/design/collaboration/<request-id>/delivery/1/appointment', isReschedule: true }
+        ]
+      },
+      {
+        code: 'SG',
+        name: 'Singapore',
+        accent: '#F19914',
+        phone: '1800.407.5624',
+        hours: [
+          'Mon. - Fri. 5:00 AM - 7:00 PM',
+          'Sat. - Sun. 5:00 AM - 2:00 PM'
+        ],
+        links: [
+          { label: 'Projects', url: 'https://www.vistaprint.sg/my-account/design/projects/' },
+          { label: 'Shopping Cart', url: 'https://www.vistaprint.sg/c/' },
+          { label: 'Order History', url: 'https://www.vistaprint.sg/oh/' },
+          { label: 'My Design Service', url: 'https://www.vistaprint.sg/graphic-design/dashboard' },
+          { label: 'Design Services', url: 'https://www.vistaprint.sg/design' },
+          { label: 'Logo', url: 'https://www.vistaprint.sg/logo-design' },
+          { label: 'Design Reschedule Link', url: 'https://www.vistaprint.sg/design/collaboration/<request-id>/delivery/1/appointment', isReschedule: true }
+        ]
+      },
+      {
+        code: 'IE',
+        name: 'Ireland',
+        accent: '#3A8BDA',
+        phone: '1800 904 804',
+        hours: [
+          'Mon – Sun: 7:30 AM – 10:00 PM IST'
+        ],
+        links: [
+          { label: 'Projects', url: 'https://www.vistaprint.ie/my-account/design/projects/' },
+          { label: 'Shopping Cart', url: 'https://www.vistaprint.ie/c/' },
+          { label: 'Order History', url: 'https://www.vistaprint.ie/oh/' },
+          { label: 'My Design Service', url: 'https://www.vistaprint.ie/graphic-design/dashboard' },
+          { label: 'Design Services', url: 'https://www.vistaprint.ie/design' },
+          { label: 'Logo', url: 'https://www.vistaprint.ie/logo-design' },
+          { label: 'Design Reschedule Link', url: 'https://www.vistaprint.ie/design/collaboration/<request-id>/delivery/1/appointment', isReschedule: true }
+        ]
+      }
+    ];
+
+    let selectedMarketFilter = 'ALL';
+    const marketCardsGrid = document.getElementById('marketCardsGrid');
+    const marketSearchInput = document.getElementById('marketSearchInput');
+    const marketToastBox = document.getElementById('marketToastBox');
+    const marketToastMsg = document.getElementById('marketToastMsg');
+    let marketToastTimer = null;
+
+    // Brand Guidelines Data & Elements
+    const BRAND_GUIDELINES = [
+      {
+        name: 'FB',
+        fullName: 'Facebook (Meta)',
+        badge: 'FB',
+        accent: '#0456A2',
+        category: 'Social Media',
+        url: 'https://www.meta.com/brand/resources/facebook/logo/'
+      },
+      {
+        name: 'IG',
+        fullName: 'Instagram (Meta)',
+        badge: 'IG',
+        accent: '#DD3884',
+        category: 'Social Media',
+        url: 'https://www.meta.com/brand/resources/instagram/instagram-brand/'
+      },
+      {
+        name: 'LinkedIn',
+        fullName: 'LinkedIn Brand Center',
+        badge: 'IN',
+        accent: '#3A8BDA',
+        category: 'Professional Network',
+        url: 'https://brand.linkedin.com/en-us'
+      },
+      {
+        name: 'Pinterest',
+        fullName: 'Pinterest Business',
+        badge: 'PI',
+        accent: '#C60062',
+        category: 'Social Discovery',
+        url: 'https://business.pinterest.com/brand-guidelines/'
+      },
+      {
+        name: 'Youtube',
+        fullName: 'YouTube Brand Resources',
+        badge: 'YT',
+        accent: '#C60062',
+        category: 'Video Platform',
+        url: 'https://www.youtube.com/howyoutubeworks/resources/brand-resources/'
+      },
+      {
+        name: 'Tiktok',
+        fullName: 'TikTok Brand Guidelines',
+        badge: 'TT',
+        accent: '#0456A2',
+        category: 'Short-Form Video',
+        url: 'https://www.tiktok.com/about/brand-guidelines'
+      },
+      {
+        name: 'X',
+        fullName: 'X Brand Toolkit',
+        badge: 'X',
+        accent: '#1E293B',
+        category: 'Social Media',
+        url: 'https://about.x.com/en/who-we-are/brand-toolkit'
+      },
+      {
+        name: 'Google',
+        fullName: 'Google Brand Resource Center',
+        badge: 'GO',
+        accent: '#3A8BDA',
+        category: 'Search & Ecosystem',
+        url: 'https://about.google/intl/us_en/brand-resource-center/'
+      },
+      {
+        name: 'Amazon',
+        fullName: 'Amazon Brand Services',
+        badge: 'AM',
+        accent: '#F19914',
+        category: 'E-Commerce',
+        url: 'https://brandservices.amazon.com/brandguidelines'
+      },
+      {
+        name: 'GoogleMaps',
+        fullName: 'Google Maps Geo Guidelines',
+        badge: 'GM',
+        accent: '#0456A2',
+        category: 'Maps & Location',
+        url: 'https://about.google/brand-resource-center/products-and-services/geo-guidelines/'
+      }
+    ];
+
+    const brandCardsGrid = document.getElementById('brandCardsGrid');
+    const brandSearchInput = document.getElementById('brandSearchInput');
+    const brandToastBox = document.getElementById('brandToastBox');
+    const brandToastMsg = document.getElementById('brandToastMsg');
+    let brandToastTimer = null;
+
+    // Email Template Form Elements
+    const templateSelect = document.getElementById('templateSelect');
+    const customerNameInput = document.getElementById('customerName');
+    const productNameInput = document.getElementById('productName');
+    const revisionCountInput = document.getElementById('revisionCount');
+    const locationSelect = document.getElementById('locationSelect');
+    const notesInput = document.getElementById('notes');
+    const missingInfoTextInput = document.getElementById('missingInfoText');
+    const freeMessageTextInput = document.getElementById('freeMessageText');
+    const docListContainer = document.getElementById('docListContainer');
+    const addDocBtn = document.getElementById('addDocBtn');
+
+    // Email Template Section Wrappers
+    const productFieldWrapper = document.getElementById('productFieldWrapper');
+    const revisionFieldWrapper = document.getElementById('revisionFieldWrapper');
+    const notesFieldWrapper = document.getElementById('notesFieldWrapper');
+    const notesInputContainer = document.getElementById('notesInputContainer');
+    const toggleNotesBtn = document.getElementById('toggleNotesBtn');
+    const toggleNotesBtnText = document.getElementById('toggleNotesBtnText');
+    const missingInfoWrapper = document.getElementById('missingInfoWrapper');
+    const freeMessageWrapper = document.getElementById('freeMessageWrapper');
+    const documentsFieldWrapper = document.getElementById('documentsFieldWrapper');
+
+    // CF Notes Form Elements
+    const cfTicketSelect = document.getElementById('cfTicketSelect');
+    const cfFullDetailsToggleWrapper = document.getElementById('cfFullDetailsToggleWrapper');
+    const cfFullDetailsCheckbox = document.getElementById('cfFullDetailsCheckbox');
+    const cfReasonWrapper = document.getElementById('cfReasonWrapper');
+    const cfProductWrapper = document.getElementById('cfProductWrapper');
+    const cfDocumentsWrapper = document.getElementById('cfDocumentsWrapper');
+    const cfAssetsWrapper = document.getElementById('cfAssetsWrapper');
+
+    const cfReasonInput = document.getElementById('cfReasonInput');
+    const cfProductInput = document.getElementById('cfProductInput');
+    const cfNotesInput = document.getElementById('cfNotesInput');
+    const cfDocListContainer = document.getElementById('cfDocListContainer');
+    const cfAddDocBtn = document.getElementById('cfAddDocBtn');
+    const cfAdobeStockInput = document.getElementById('cfAdobeStockInput');
+    const cfFontsInput = document.getElementById('cfFontsInput');
+    const cfDriveLinkInput = document.getElementById('cfDriveLinkInput');
+
+    // Design Live Form Elements
+    const dlStatusSelect = document.getElementById('dlStatusSelect');
+    const dlProductInput = document.getElementById('dlProductInput');
+    const dlAdobeStockInput = document.getElementById('dlAdobeStockInput');
+    const dlFontsInput = document.getElementById('dlFontsInput');
+    const dlDocListContainer = document.getElementById('dlDocListContainer');
+    const dlAddDocBtn = document.getElementById('dlAddDocBtn');
+    const dlSessionNotesInput = document.getElementById('dlSessionNotesInput');
+    const dlDriveLinkInput = document.getElementById('dlDriveLinkInput');
+    const dlRecordingLinkInput = document.getElementById('dlRecordingLinkInput');
+    const dlPasscodeInput = document.getElementById('dlPasscodeInput');
+    const dlOtherHashtagsSelect = document.getElementById('dlOtherHashtagsSelect');
+
+    // Shared Output & Action Elements
+    const outputPreview = document.getElementById('outputPreview');
+    const outputCardTitle = document.getElementById('outputCardTitle');
+    const outputCardSubtitle = document.getElementById('outputCardSubtitle');
+    const outputCardIcon = document.getElementById('outputCardIcon');
+    const copyBtn = document.getElementById('copyBtn');
+    const copyBtnText = document.getElementById('copyBtnText');
+    const toastBox = document.getElementById('toastBox');
+    const toastMsg = document.getElementById('toastMsg');
+    const resetBtn = document.getElementById('resetBtn');
+    const cfResetBtn = document.getElementById('cfResetBtn');
+    const dlResetBtn = document.getElementById('dlResetBtn');
+
+    // HTML Escaping Utility
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Tab Switching Logic
+    tabEmailBtn.addEventListener('click', () => switchTab('email'));
+    tabCfBtn.addEventListener('click', () => switchTab('cf'));
+    tabDlBtn.addEventListener('click', () => switchTab('dl'));
+    tabMarketBtn.addEventListener('click', () => switchTab('market'));
+    tabBrandBtn.addEventListener('click', () => switchTab('brand'));
+
+    function switchTab(targetTab) {
+      activeTab = targetTab;
+      portalTitleInput.value = 'Designer Hub';
+      
+      tabEmailBtn.classList.remove('active');
+      tabCfBtn.classList.remove('active');
+      tabDlBtn.classList.remove('active');
+      tabMarketBtn.classList.remove('active');
+      tabBrandBtn.classList.remove('active');
+      emailFormSection.classList.add('hidden');
+      cfFormSection.classList.add('hidden');
+      dlFormSection.classList.add('hidden');
+
+      if (activeTab === 'market') {
+        tabMarketBtn.classList.add('active');
+        generatorWorkspace.classList.add('hidden');
+        brandGuidelinesSection.classList.add('hidden');
+        marketDirectorySection.classList.remove('hidden');
+        renderMarketDirectory();
+        return;
+      }
+
+      if (activeTab === 'brand') {
+        tabBrandBtn.classList.add('active');
+        generatorWorkspace.classList.add('hidden');
+        marketDirectorySection.classList.add('hidden');
+        brandGuidelinesSection.classList.remove('hidden');
+        renderBrandGuidelines();
+        return;
+      }
+
+      marketDirectorySection.classList.add('hidden');
+      brandGuidelinesSection.classList.add('hidden');
+      generatorWorkspace.classList.remove('hidden');
+
+      if (activeTab === 'email') {
+        tabEmailBtn.classList.add('active');
+        emailFormSection.classList.remove('hidden');
+        outputCardTitle.innerText = 'Generated Email';
+        outputCardSubtitle.innerText = '';
+        outputCardSubtitle.classList.add('hidden');
+        outputCardIcon.innerText = '✉';
+        copyBtnText.innerText = 'Copy Email';
+      } else if (activeTab === 'cf') {
+        tabCfBtn.classList.add('active');
+        cfFormSection.classList.remove('hidden');
+        outputCardTitle.innerText = 'Generated CF Note';
+        outputCardSubtitle.innerText = '';
+        outputCardSubtitle.classList.add('hidden');
+        outputCardIcon.innerText = '📋';
+        copyBtnText.innerText = 'Copy Note';
+      } else {
+        tabDlBtn.classList.add('active');
+        dlFormSection.classList.remove('hidden');
+        outputCardTitle.innerText = 'Design Live Summary';
+        outputCardSubtitle.innerText = 'Ready to log in session documentation';
+        outputCardSubtitle.classList.remove('hidden');
+        outputCardIcon.innerText = '🎥';
+        copyBtnText.innerText = 'Copy Summary';
+      }
+
+      updatePreview();
+    }
+
+    // Market Directory Functions
+    function showMarketToast(message) {
+      marketToastMsg.innerText = message;
+      marketToastBox.classList.remove('opacity-0', 'pointer-events-none');
+      if (marketToastTimer) clearTimeout(marketToastTimer);
+      marketToastTimer = setTimeout(() => {
+        marketToastBox.classList.add('opacity-0', 'pointer-events-none');
+      }, 2200);
+    }
+
+    async function copyPlainTextSafe(text) {
+      try {
+        const tempInput = document.createElement('textarea');
+        tempInput.value = text;
+        tempInput.style.position = 'fixed';
+        tempInput.style.left = '-9999px';
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        return true;
+      } catch (e) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+        return false;
+      }
+    }
+
+    function renderMarketDirectory() {
+      const query = (marketSearchInput.value || '').trim().toLowerCase();
+
+      const filteredMarkets = MARKET_DIRECTORY.filter(market => {
+        if (selectedMarketFilter !== 'ALL' && market.code !== selectedMarketFilter) {
+          return false;
+        }
+        if (!query) return true;
+        const matchesMarket = market.code.toLowerCase().includes(query) ||
+          market.name.toLowerCase().includes(query) ||
+          market.phone.toLowerCase().includes(query);
+        const matchesLink = market.links.some(l =>
+          l.label.toLowerCase().includes(query) || l.url.toLowerCase().includes(query)
+        );
+        return matchesMarket || matchesLink;
+      });
+
+      if (filteredMarkets.length === 0) {
+        marketCardsGrid.innerHTML = `
+          <div class="xl:col-span-2 bg-white rounded-3xl p-10 text-center border border-[#E1EEFA] shadow-sm">
+            <p class="text-sm font-bold text-slate-700">No matching markets or links found</p>
+            <p class="text-xs text-slate-400 mt-1">Try clearing your search or selecting "All Markets".</p>
+          </div>
+        `;
+        return;
+      }
+
+      marketCardsGrid.innerHTML = filteredMarkets.map(market => {
+        const visibleLinks = market.links.filter(link => {
+          if (!query) return true;
+          const matchesMarketOnly = market.code.toLowerCase().includes(query) ||
+            market.name.toLowerCase().includes(query) ||
+            market.phone.toLowerCase().includes(query);
+          if (matchesMarketOnly) return true;
+          return link.label.toLowerCase().includes(query) || link.url.toLowerCase().includes(query);
+        });
+
+        const linksHtml = visibleLinks.map(link => {
+          const resolvedUrl = link.url;
+
+          return `
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-2xl bg-[#F8FBFE] border border-[#E6F0FA] hover:border-[#C9E0F7] transition-all">
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold text-slate-800">${escapeHtml(link.label)}</span>
+                </div>
+                <p class="text-[11px] font-mono-code text-slate-500 truncate mt-0.5" title="${escapeHtml(resolvedUrl)}">${escapeHtml(resolvedUrl)}</p>
+              </div>
+
+              <div class="flex items-center gap-2 shrink-0">
+                <a 
+                  href="${escapeHtml(resolvedUrl)}" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="px-3 py-1.5 rounded-xl bg-[#0456A2] hover:bg-[#3A8BDA] text-white text-xs font-bold inline-flex items-center gap-1.5 transition-colors shadow-xs"
+                >
+                  <span>Open Link</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                  </svg>
+                </a>
+                <button 
+                  type="button" 
+                  data-copy-url="${escapeHtml(resolvedUrl)}"
+                  data-copy-label="${escapeHtml(market.code + ' - ' + link.label)}"
+                  class="market-copy-btn px-3 py-1.5 rounded-xl bg-white hover:bg-[#EBF4FD] text-[#0456A2] border border-[#CDE1F7] text-xs font-bold inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                  </svg>
+                  <span>Copy Link</span>
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="bg-white rounded-3xl p-5 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] flex flex-col justify-between gap-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3.5 border-b border-[#EDF4FC]">
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-white font-extrabold text-sm shadow-sm shrink-0" style="background: ${market.accent};">
+                  ${escapeHtml(market.code)}
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-800">${escapeHtml(market.name)}</h3>
+                  <div class="mt-0.5 space-y-0.5">
+                    ${market.hours.map(line => `<p class="text-[11px] text-slate-500">${escapeHtml(line)}</p>`).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <button 
+                type="button" 
+                data-copy-phone="${escapeHtml(market.phone)}"
+                data-copy-market="${escapeHtml(market.code)}"
+                class="market-phone-btn self-start sm:self-center px-3.5 py-2 rounded-2xl bg-[#F4F9FE] hover:bg-[#E4F1FD] border border-[#D4E6F8] text-left transition-colors cursor-pointer group"
+                title="Click to copy phone number"
+              >
+                <span class="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Support Phone</span>
+                <span class="text-xs font-extrabold text-[#0456A2] font-mono-code group-hover:underline">${escapeHtml(market.phone)}</span>
+              </button>
+            </div>
+
+            <div class="space-y-2">
+              ${linksHtml}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Bind copy buttons
+      marketCardsGrid.querySelectorAll('.market-copy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const url = btn.getAttribute('data-copy-url');
+          const label = btn.getAttribute('data-copy-label');
+          const ok = await copyPlainTextSafe(url);
+          if (ok) {
+            const labelSpan = btn.querySelector('span');
+            if (labelSpan) labelSpan.innerText = 'Copied!';
+            showMarketToast(`Copied ${label} link!`);
+            setTimeout(() => {
+              if (labelSpan) labelSpan.innerText = 'Copy Link';
+            }, 1500);
+          }
+        });
+      });
+
+      marketCardsGrid.querySelectorAll('.market-phone-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const phone = btn.getAttribute('data-copy-phone');
+          const code = btn.getAttribute('data-copy-market');
+          const ok = await copyPlainTextSafe(phone);
+          if (ok) {
+            showMarketToast(`Copied ${code} phone: ${phone}`);
+          }
+        });
+      });
+    }
+
+    // Market Directory Filter Pill Listeners
+    document.querySelectorAll('.market-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        selectedMarketFilter = pill.getAttribute('data-market');
+        document.querySelectorAll('.market-pill').forEach(p => {
+          p.classList.remove('active', 'bg-[#0456A2]', 'text-white', 'shadow-sm');
+          p.classList.add('bg-[#F4F9FE]', 'text-slate-600', 'border', 'border-[#D7E6F6]');
+        });
+        pill.classList.add('active', 'bg-[#0456A2]', 'text-white', 'shadow-sm');
+        pill.classList.remove('bg-[#F4F9FE]', 'text-slate-600', 'border', 'border-[#D7E6F6]');
+        renderMarketDirectory();
+      });
+    });
+
+    marketSearchInput.addEventListener('input', renderMarketDirectory);
+
+    // Brand Guidelines Functions
+    function showBrandToast(message) {
+      brandToastMsg.innerText = message;
+      brandToastBox.classList.remove('opacity-0', 'pointer-events-none');
+      if (brandToastTimer) clearTimeout(brandToastTimer);
+      brandToastTimer = setTimeout(() => {
+        brandToastBox.classList.add('opacity-0', 'pointer-events-none');
+      }, 2200);
+    }
+
+    function renderBrandGuidelines() {
+      const query = (brandSearchInput.value || '').trim().toLowerCase();
+      const filteredBrands = BRAND_GUIDELINES.filter(brand => {
+        if (!query) return true;
+        return (
+          brand.name.toLowerCase().includes(query) ||
+          brand.fullName.toLowerCase().includes(query) ||
+          brand.category.toLowerCase().includes(query) ||
+          brand.url.toLowerCase().includes(query)
+        );
+      });
+
+      if (filteredBrands.length === 0) {
+        brandCardsGrid.innerHTML = `
+          <div class="md:col-span-2 bg-white rounded-3xl p-10 text-center border border-[#E1EEFA] shadow-sm">
+            <p class="text-sm font-bold text-slate-700">No matching brand guidelines found</p>
+            <p class="text-xs text-slate-400 mt-1">Try searching for FB, IG, LinkedIn, Pinterest, Youtube, Tiktok, X, Google, Amazon, or GoogleMaps.</p>
+          </div>
+        `;
+        return;
+      }
+
+      brandCardsGrid.innerHTML = filteredBrands.map(brand => `
+        <div class="bg-white rounded-3xl p-5 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] flex flex-col justify-between gap-4 hover:border-[#C5DDF7] transition-all">
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-11 h-11 rounded-2xl flex items-center justify-center text-white font-extrabold text-xs shadow-sm shrink-0" style="background: ${brand.accent};">
+                ${escapeHtml(brand.badge)}
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-2">
+                  <h3 class="text-sm font-bold text-slate-800">${escapeHtml(brand.name)}</h3>
+                </div>
+                <p class="text-xs text-slate-500 mt-0.5 truncate">${escapeHtml(brand.fullName)}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-[#F8FBFE] border border-[#E6F0FA]">
+            <p class="text-[11px] font-mono-code text-slate-500 truncate" title="${escapeHtml(brand.url)}">${escapeHtml(brand.url)}</p>
+          </div>
+
+          <div class="flex items-center justify-end gap-2 pt-1">
+            <button 
+              type="button" 
+              data-brand-url="${escapeHtml(brand.url)}"
+              data-brand-name="${escapeHtml(brand.name)}"
+              class="brand-copy-btn px-3.5 py-2 rounded-xl bg-[#F4F9FE] hover:bg-[#E4F1FD] text-[#0456A2] border border-[#CFE3F8] text-xs font-bold inline-flex items-center gap-1.5 transition-colors cursor-pointer"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+              </svg>
+              Copy Link
+            </button>
+            <a 
+              href="${escapeHtml(brand.url)}" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="primary-btn px-4 py-2 rounded-xl text-xs font-bold inline-flex items-center gap-1.5"
+            >
+              <span>Open Guidelines</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      `).join('');
+
+      brandCardsGrid.querySelectorAll('.brand-copy-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const url = btn.getAttribute('data-brand-url');
+          const name = btn.getAttribute('data-brand-name');
+          const ok = await copyPlainTextSafe(url);
+          if (ok) {
+            showBrandToast(`Copied ${name} guidelines link!`);
+          }
+        });
+      });
+    }
+
+    brandSearchInput.addEventListener('input', renderBrandGuidelines);
+
+    // Handle Email Template Dropdown Changes
+    function handleTemplateChange() {
+      const selected = templateSelect.value;
+      if (selected === 'missing') {
+        productFieldWrapper.classList.remove('hidden');
+        revisionFieldWrapper.classList.add('hidden');
+        notesFieldWrapper.classList.add('hidden');
+        documentsFieldWrapper.classList.add('hidden');
+        missingInfoWrapper.classList.remove('hidden');
+        freeMessageWrapper.classList.add('hidden');
+      } else if (selected === 'free') {
+        productFieldWrapper.classList.add('hidden');
+        revisionFieldWrapper.classList.add('hidden');
+        notesFieldWrapper.classList.add('hidden');
+        documentsFieldWrapper.classList.add('hidden');
+        missingInfoWrapper.classList.add('hidden');
+        freeMessageWrapper.classList.remove('hidden');
+      } else {
+        productFieldWrapper.classList.remove('hidden');
+        revisionFieldWrapper.classList.remove('hidden');
+        notesFieldWrapper.classList.remove('hidden');
+        documentsFieldWrapper.classList.remove('hidden');
+        missingInfoWrapper.classList.add('hidden');
+        freeMessageWrapper.classList.add('hidden');
+      }
+      updatePreview();
+    }
+
+    // Handle CF Ticket Action Dropdown Changes
+    function handleCfTicketChange() {
+      const action = cfTicketSelect.value;
+      const isSimpleType = (action === 'reschedule' || action === 'handover' || action === 'escalate');
+
+      if (isSimpleType) {
+        cfFullDetailsToggleWrapper.classList.remove('hidden');
+      } else {
+        cfFullDetailsToggleWrapper.classList.add('hidden');
+      }
+
+      if (action === 'handover' || action === 'escalate') {
+        cfReasonWrapper.classList.remove('hidden');
+      } else {
+        cfReasonWrapper.classList.add('hidden');
+      }
+
+      const showDetailedFields = !isSimpleType || cfFullDetailsCheckbox.checked;
+      if (showDetailedFields) {
+        cfProductWrapper.classList.remove('hidden');
+        cfDocumentsWrapper.classList.remove('hidden');
+        cfAssetsWrapper.classList.remove('hidden');
+      } else {
+        cfProductWrapper.classList.add('hidden');
+        cfDocumentsWrapper.classList.add('hidden');
+        cfAssetsWrapper.classList.add('hidden');
+      }
+      updatePreview();
+    }
+
+    // Render Document Rows (Email Tab - linked with CF Notes)
+    function renderDocRows() {
+      const isMultiple = sharedDocuments.length > 1;
+      docListContainer.innerHTML = '';
+
+      sharedDocuments.forEach((doc, idx) => {
+        const optionBadge = isMultiple
+          ? `<span class="badge-pill bg-[#EBF4FD] text-[#0456A2] border border-[#CEE4FA]">Option ${idx + 1}</span>`
+          : '';
+
+        const removeBtn = isMultiple
+          ? `<button type="button" data-id="${doc.id}" class="remove-email-doc-btn text-slate-400 hover:text-rose-500 transition-colors p-1 rounded-lg hover:bg-rose-50 cursor-pointer" title="Remove">
+               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+             </button>`
+          : '';
+
+        const headerBar = (optionBadge || removeBtn)
+          ? `<div class="flex items-center justify-between">${optionBadge}${removeBtn}</div>`
+          : '';
+
+        const rowHtml = document.createElement('div');
+        rowHtml.className = 'p-3.5 rounded-2xl bg-[#F8FBFE] border border-[#E2EDFA] space-y-2.5 transition-all';
+        rowHtml.innerHTML = `
+          ${headerBar}
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1">Document Name</label>
+              <input 
+                type="text" 
+                data-id="${doc.id}" 
+                data-field="name"
+                value="${escapeHtml(doc.name)}" 
+                placeholder="DS-V0-1-00000000" 
+                class="email-doc-input soft-input w-full px-3 py-1.5 text-xs font-mono-code placeholder-slate-400"
+              />
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-slate-400 uppercase tracking-wide mb-1">Document ID</label>
+              <input 
+                type="text" 
+                data-id="${doc.id}" 
+                data-field="docId"
+                value="${escapeHtml(doc.docId)}" 
+                placeholder="00000000-0000-0000-0000-000000000000" 
+                class="email-doc-input soft-input w-full px-3 py-1.5 text-xs font-mono-code placeholder-slate-400"
+              />
+            </div>
+          </div>
+        `;
+        docListContainer.appendChild(rowHtml);
+      });
+
+      document.querySelectorAll('.email-doc-input').forEach(input => {
+        input.addEventListener('input', (e) => {
+          const id = Number(e.target.getAttribute('data-id'));
+          const field = e.target.getAttribute('data-field');
+          const item = sharedDocuments.find(d => d.id === id);
+          if (item) {
+            item[field] = e.target.value;
+            renderCfDocRows();
+            renderDlDocRows();
+            updatePreview();
+          }
+        });
+      });
+
+      document.querySelectorAll('.remove-email-doc-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = Number(e.currentTarget.getAttribute('data-id'));
+          if (sharedDocuments.length > 1) {
+            sharedDocuments = sharedDocuments.filter(d => d.id !== id);
+            renderDocRows();
+            renderCfDocRows();
+            renderDlDocRows();
+            updatePreview();
+          }
+        });
+      });
+    }
+
+    // Render Document Rows (CF Notes Tab - linked with Email Configuration & Design Live)
+    function renderCfDocRows() {
+      const isMultiple = sharedDocuments.length > 1;
+      cfDocListContainer.innerHTML = '';
+
+      sharedDocuments.forEach((doc, idx) => {
+        const labelText = isMultiple ? `Document #${idx + 1}` : 'Document';
+        const removeBtn = isMultiple
+          ? `<button type="button" data-id="${doc.id}" class="remove-cf-doc-btn text-slate-400 hover:text-rose-500 transition-colors p-0.5 rounded hover:bg-rose-50 cursor-pointer" title="Remove">
+               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+             </button>`
+          : '';
+
+        const rowHtml = document.createElement('div');
+        rowHtml.className = 'p-3 rounded-2xl bg-[#F8FBFE] border border-[#E2EDFA] space-y-2';
+        rowHtml.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold text-[#0456A2] uppercase tracking-wider">${labelText}</span>
+            ${removeBtn}
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <input 
+              type="text" 
+              data-id="${doc.id}" 
+              data-field="name"
+              value="${escapeHtml(doc.name)}" 
+              placeholder="DS-V0-1-00000000" 
+              class="cf-doc-input soft-input w-full px-2.5 py-1.5 text-xs font-mono-code placeholder-slate-400"
+            />
+            <input 
+              type="text" 
+              data-id="${doc.id}" 
+              data-field="docId"
+              value="${escapeHtml(doc.docId)}" 
+              placeholder="00000000-0000-0000-0000-000000000000" 
+              class="cf-doc-input soft-input w-full px-2.5 py-1.5 text-xs font-mono-code placeholder-slate-400"
+            />
+          </div>
+        `;
+        cfDocListContainer.appendChild(rowHtml);
+      });
+
+      document.querySelectorAll('.cf-doc-input').forEach(input => {
+        input.addEventListener('input', (e) => {
+          const id = Number(e.target.getAttribute('data-id'));
+          const field = e.target.getAttribute('data-field');
+          const item = sharedDocuments.find(d => d.id === id);
+          if (item) {
+            item[field] = e.target.value;
+            renderDocRows();
+            renderDlDocRows();
+            updatePreview();
+          }
+        });
+      });
+
+      document.querySelectorAll('.remove-cf-doc-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = Number(e.currentTarget.getAttribute('data-id'));
+          if (sharedDocuments.length > 1) {
+            sharedDocuments = sharedDocuments.filter(d => d.id !== id);
+            renderCfDocRows();
+            renderDocRows();
+            renderDlDocRows();
+            updatePreview();
+          }
+        });
+      });
+    }
+
+    // Format multiline string into bulleted lines (N/A if empty)
+    function formatBulletList(rawText, bulletChar = '-') {
+      const lines = (rawText || '')
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
+      if (lines.length === 0) return `${bulletChar} N/A`;
+      return lines.map(line => `${bulletChar} ${line}`).join('\n');
+    }
+
+    // Render Document Rows (Design Live Tab - linked with Email & CF Notes)
+    function renderDlDocRows() {
+      const isMultiple = sharedDocuments.length > 1;
+      dlDocListContainer.innerHTML = '';
+
+      sharedDocuments.forEach((doc, idx) => {
+        const labelText = isMultiple ? `Document #${idx + 1}` : 'Document';
+        const removeBtn = isMultiple
+          ? `<button type="button" data-id="${doc.id}" class="remove-dl-doc-btn text-slate-400 hover:text-rose-500 transition-colors p-0.5 rounded hover:bg-rose-50 cursor-pointer" title="Remove">
+               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+             </button>`
+          : '';
+
+        const rowHtml = document.createElement('div');
+        rowHtml.className = 'p-3 rounded-2xl bg-[#F8FBFE] border border-[#E2EDFA] space-y-2';
+        rowHtml.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-bold text-[#0456A2] uppercase tracking-wider">${labelText}</span>
+            ${removeBtn}
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <input 
+              type="text" 
+              data-id="${doc.id}" 
+              data-field="name"
+              value="${escapeHtml(doc.name)}" 
+              placeholder="DS-V0-1-00000000" 
+              class="dl-doc-input soft-input w-full px-2.5 py-1.5 text-xs font-mono-code placeholder-slate-400"
+            />
+            <input 
+              type="text" 
+              data-id="${doc.id}" 
+              data-field="docId"
+              value="${escapeHtml(doc.docId)}" 
+              placeholder="00000000-0000-0000-0000-000000000000" 
+              class="dl-doc-input soft-input w-full px-2.5 py-1.5 text-xs font-mono-code placeholder-slate-400"
+            />
+          </div>
+        `;
+        dlDocListContainer.appendChild(rowHtml);
+      });
+
+      document.querySelectorAll('.dl-doc-input').forEach(input => {
+        input.addEventListener('input', (e) => {
+          const id = Number(e.target.getAttribute('data-id'));
+          const field = e.target.getAttribute('data-field');
+          const item = sharedDocuments.find(d => d.id === id);
+          if (item) {
+            item[field] = e.target.value;
+            renderDocRows();
+            renderCfDocRows();
+            updatePreview();
+          }
+        });
+      });
+
+      document.querySelectorAll('.remove-dl-doc-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = Number(e.currentTarget.getAttribute('data-id'));
+          if (sharedDocuments.length > 1) {
+            sharedDocuments = sharedDocuments.filter(d => d.id !== id);
+            renderDlDocRows();
+            renderDocRows();
+            renderCfDocRows();
+            updatePreview();
+          }
+        });
+      });
+    }
+
+    // Build Email Template Content (HTML & Plain Text)
+    function buildEmailContent() {
+      const selectedTemplate = templateSelect.value;
+      const customer = customerNameInput.value.trim() || 'N/A';
+      const product = productNameInput.value.trim() || 'N/A';
+      const locationCode = locationSelect.value || 'US';
+      const contactInfo = CONTACT_DETAILS[locationCode] || CONTACT_DETAILS['US'];
+      const dashboardUrl = DASHBOARD_URLS[locationCode] || DASHBOARD_URLS['US'];
+
+      const safeCustomer = escapeHtml(customer);
+      const safeProduct = escapeHtml(product);
+      const safeContactHtml = escapeHtml(contactInfo).replace(/\n/g, '<br>');
+      const linkedServicesHtml = `<a href="${dashboardUrl}" target="_blank" rel="noopener noreferrer" style="color: #0456A2; text-decoration: underline; font-weight: 600;">My Design Services</a>`;
+
+      if (selectedTemplate === 'free') {
+        const messageText = freeMessageTextInput.value.trim() || 'N/A';
+        const messageHtml = escapeHtml(messageText).replace(/\n/g, '<br>');
+
+        const plain = `Hi ${customer},
+
+Thank you for choosing Vistaprint!
+
+${messageText} 
+
+We appreciate your patience and look forward to bringing your design to life.
+
+Regards,
+VistaPrint's Design Services Team
+${contactInfo}`;
+
+        const html = `<div style="font-family: Arial, sans-serif; font-size: 13px; color: #1E293B; line-height: 1.55;">Hi ${safeCustomer},<br><br>Thank you for choosing Vistaprint!<br><br>${messageHtml}<br><br>We appreciate your patience and look forward to bringing your design to life.<br><br>Regards,<br>VistaPrint's Design Services Team<br>${safeContactHtml}</div>`;
+
+        return { plain, html };
+      }
+
+      if (selectedTemplate === 'missing') {
+        const missingBulletsText = formatBulletList(missingInfoTextInput.value, '•');
+        const missingBulletsHtml = escapeHtml(missingBulletsText).replace(/\n/g, '<br>');
+
+        const plain = `Hi ${customer},
+
+Thank you for choosing Vistaprint! 
+
+We have reviewed your design request and attached references for your ${product}. To ensure we capture your vision accurately, could you please provide a few additional details? Specifically, we would appreciate the following:
+${missingBulletsText}
+
+You can simply reply directly to this email with the extra details or attachments.
+
+Thank you for your understanding and collaboration!
+
+We appreciate your patience and look forward to bringing your design to life.
+
+Regards,
+VistaPrint's Design Services Team
+${contactInfo}`;
+
+        const html = `<div style="font-family: Arial, sans-serif; font-size: 13px; color: #1E293B; line-height: 1.55;">Hi ${safeCustomer},<br><br>Thank you for choosing Vistaprint!<br><br>We have reviewed your design request and attached references for your ${safeProduct}. To ensure we capture your vision accurately, could you please provide a few additional details? Specifically, we would appreciate the following:<br>${missingBulletsHtml}<br><br>You can simply reply directly to this email with the extra details or attachments.<br><br>Thank you for your understanding and collaboration!<br><br>We appreciate your patience and look forward to bringing your design to life.<br><br>Regards,<br>VistaPrint's Design Services Team<br>${safeContactHtml}</div>`;
+
+        return { plain, html };
+      }
+
+      // Revision count handling: 0 completely omits the revision sentence
+      const revRaw = parseInt(revisionCountInput.value, 10);
+      const revCount = isNaN(revRaw) ? 0 : Math.min(3, Math.max(0, revRaw));
+      const revisionSentence = revCount > 0
+        ? ` You still have ${revCount} free revision/s remaining if you'd like to make further changes.`
+        : '';
+
+      // Optional additional notes
+      const rawNotes = notesInput.value.trim();
+      const notesSentence = rawNotes ? ` ${rawNotes}` : '';
+
+      // Documents block with Option 1 / Option 2 auto-numbering
+      const isMultiple = sharedDocuments.length > 1;
+      const docLines = sharedDocuments.map((doc, idx) => {
+        const dName = doc.name.trim() || 'N/A';
+        const dId = doc.docId.trim() || 'N/A';
+        return isMultiple ? `Option ${idx + 1}: ${dName} | ${dId}` : `${dName} | ${dId}`;
+      });
+      const docsPlain = docLines.join('\n');
+      const docsHtml = docLines.map(line => escapeHtml(line)).join('<br>');
+
+      const introLine = selectedTemplate === 'revision'
+        ? `We have completed your revision request for your ${product} and is now saved in your account.${notesSentence}${revisionSentence}`
+        : `We have completed the design for your ${product} and saved it to your account.${notesSentence}${revisionSentence}`;
+
+      const introLineHtml = selectedTemplate === 'revision'
+        ? `We have completed your revision request for your ${safeProduct} and is now saved in your account.${escapeHtml(notesSentence)}${escapeHtml(revisionSentence)}`
+        : `We have completed the design for your ${safeProduct} and saved it to your account.${escapeHtml(notesSentence)}${escapeHtml(revisionSentence)}`;
+
+      const plain = `Hi ${customer},
+
+Thank you for choosing Vistaprint! 
+
+${introLine}
+
+To view, kindly sign-in to the Vistaprint website, go to My Designs in My Design Services and open the project. Design saved as:
+${docsPlain}
+
+For further design help, feel free to reply to this email or call us at your earliest convenience.
+
+Your patience is highly appreciated. Thank you for trusting us with your design needs.
+
+Regards,
+VistaPrint's Design Services Team
+${contactInfo}`;
+
+      const html = `<div style="font-family: Arial, sans-serif; font-size: 13px; color: #1E293B; line-height: 1.55;">Hi ${safeCustomer},<br><br>Thank you for choosing Vistaprint!<br><br>${introLineHtml}<br><br>To view, kindly sign-in to the Vistaprint website, go to My Designs in ${linkedServicesHtml} and open the project. Design saved as:<br>${docsHtml}<br><br>For further design help, feel free to reply to this email or call us at your earliest convenience.<br><br>Your patience is highly appreciated. Thank you for trusting us with your design needs.<br><br>Regards,<br>VistaPrint's Design Services Team<br>${safeContactHtml}</div>`;
+
+      return { plain, html };
+    }
+
+    // Build CF Notes Content
+    function buildCfContent() {
+      const action = cfTicketSelect.value;
+      const isSimpleType = (action === 'reschedule' || action === 'handover' || action === 'escalate');
+      const includeFull = !isSimpleType || cfFullDetailsCheckbox.checked;
+
+      const reason = cfReasonInput.value.trim() || 'N/A';
+      const product = cfProductInput.value.trim() || 'N/A';
+      const notesBullets = formatBulletList(cfNotesInput.value, '-');
+
+      if (!includeFull) {
+        if (action === 'reschedule') {
+          return `Hi Team!
+
+Need to reschedule.
+
+Note/s:
+${notesBullets}
+
+Thank you!`;
+        }
+        if (action === 'handover') {
+          return `Hi Team!
+
+Need to handover due to: ${reason}
+
+Note/s if available:
+${notesBullets}
+
+Thank you!`;
+        }
+        if (action === 'escalate') {
+          return `Hi Team!
+
+Need to escalate due to: ${reason}
+
+Note/s if available:
+${notesBullets}
+
+Thank you!`;
+        }
+      }
+
+      // Full Detailed Specification
+      let headerBlock = '';
+      if (action === 'complete') {
+        headerBlock = `Order Complete\n\nCreated design for ${product}`;
+      } else if (action === 'revision') {
+        headerBlock = `Revision Complete\n\nRevised a design for ${product}`;
+      } else if (action === 'reschedule') {
+        headerBlock = `Need to reschedule.\n\nDesign for ${product}`;
+      } else if (action === 'handover') {
+        headerBlock = `Need to handover due to: ${reason}\n\nDesign for ${product}`;
+      } else if (action === 'escalate') {
+        headerBlock = `Need to escalate due to: ${reason}\n\nDesign for ${product}`;
+      }
+
+      const docsBlock = sharedDocuments.map(doc => {
+        const dName = doc.name.trim() || 'N/A';
+        const dId = doc.docId.trim() || 'N/A';
+        return `- ${dName} | ${dId}`;
+      }).join('\n');
+
+      const adobeStock = cfAdobeStockInput.value.trim() || 'N/A';
+      const fonts = cfFontsInput.value.trim() || 'N/A';
+
+      const selectedSoftwares = Array.from(document.querySelectorAll('.cf-software-cb:checked'))
+        .map(cb => `- ${cb.value}`);
+      const softwareBlock = selectedSoftwares.length > 0 ? selectedSoftwares.join('\n') : '- N/A';
+
+      const driveLink = cfDriveLinkInput.value.trim() || 'N/A';
+
+      const checkedHashtags = Array.from(document.querySelectorAll('.cf-hashtag-cb:checked'))
+        .map(cb => cb.value);
+      const hashtagsBlock = checkedHashtags.length > 0 ? `\n${checkedHashtags.join('\n')}\n` : '';
+
+      return `Hi Team!
+
+${headerBlock}
+
+Note/s:
+${notesBullets}
+
+Document/s saved as:
+${docsBlock}
+
+Assets Used
+- Adobe Stock Used: ${adobeStock}
+- Fonts Used: ${fonts}
+
+Software:
+${softwareBlock}
+
+Reference Links:
+- Google Drive Link: ${driveLink}
+${hashtagsBlock}
+Thank you!`.replace(/\n{3,}/g, '\n\n');
+    }
+
+    // Build Design Live Documentation Content
+    function buildDlContent() {
+      const status = dlStatusSelect.value || '#Completed';
+      const prepWorkEl = document.querySelector('input[name="dlPrepWork"]:checked');
+      const postWorkEl = document.querySelector('input[name="dlPostWork"]:checked');
+      const prepWork = prepWorkEl ? prepWorkEl.value : 'No';
+      const postWork = postWorkEl ? postWorkEl.value : 'No';
+      const product = dlProductInput.value.trim() || 'N/A';
+      const adobeStock = dlAdobeStockInput.value.trim() || 'N/A';
+      const fonts = dlFontsInput.value.trim() || 'N/A';
+
+      const selectedSoftwares = Array.from(document.querySelectorAll('.dl-software-cb:checked'))
+        .map(cb => cb.value);
+      const softwareText = selectedSoftwares.length > 0 ? selectedSoftwares.join(', ') : 'N/A';
+
+      const docLines = sharedDocuments.map(doc => {
+        const dName = doc.name.trim() || 'N/A';
+        const dId = doc.docId.trim() || 'N/A';
+        return `${dName} | ${dId}`;
+      });
+      const docsText = docLines.length === 1
+        ? docLines[0]
+        : '\n' + docLines.map(l => `  • ${l}`).join('\n');
+
+      const sessionBullets = formatBulletList(dlSessionNotesInput.value, '•')
+        .split('\n')
+        .map(line => `  ${line}`)
+        .join('\n');
+
+      const driveLink = dlDriveLinkInput.value.trim() || 'N/A';
+      const recordingLink = dlRecordingLinkInput.value.trim() || 'N/A';
+      const passcode = dlPasscodeInput.value.trim() || 'N/A';
+      const otherHashtag = dlOtherHashtagsSelect.value || '#MinorOfferedMP';
+
+      return `- CF Status: ${status}
+- Prep Work: ${prepWork}
+- Post Work: ${postWork}
+- Product: ${product}
+- Assets Used:
+       • Adobe Stock Used: ${adobeStock}
+       • Fonts Used: ${fonts}
+- Software: ${softwareText}
+- Document ID: ${docsText}
+- About the Session:
+${sessionBullets}
+- Reference Links:
+       • Google Drive: ${driveLink}
+       • Recording Link: ${recordingLink}
+       • Passcode: ${passcode}
+- Other Hashtags: ${otherHashtag}`;
+    }
+
+    // Master Preview Updater
+    let currentOutputPlain = '';
+    let currentOutputHtml = '';
+
+    function updatePreview() {
+      if (activeTab === 'email') {
+        const { plain, html } = buildEmailContent();
+        currentOutputPlain = plain;
+        currentOutputHtml = html;
+        outputPreview.innerHTML = html;
+      } else if (activeTab === 'cf') {
+        const text = buildCfContent();
+        currentOutputPlain = text;
+        currentOutputHtml = '';
+        outputPreview.textContent = text;
+      } else if (activeTab === 'dl') {
+        const text = buildDlContent();
+        currentOutputPlain = text;
+        currentOutputHtml = '';
+        outputPreview.textContent = text;
+      }
+    }
+
+    // Sync manual edits inside the editable preview box
+    outputPreview.addEventListener('input', () => {
+      if (activeTab === 'email') {
+        currentOutputHtml = outputPreview.innerHTML;
+        currentOutputPlain = outputPreview.innerText;
+      } else {
+        currentOutputPlain = outputPreview.innerText;
+        currentOutputHtml = '';
+      }
+    });
+
+    // Copy Output to Clipboard (Rich HTML + Plain Text Fallback, preserving manual edits)
+    let toastTimer = null;
+
+    function showToast(message) {
+      toastMsg.innerText = message;
+      toastBox.classList.remove('opacity-0', 'pointer-events-none');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toastBox.classList.add('opacity-0', 'pointer-events-none');
+      }, 2400);
+    }
+
+    copyBtn.addEventListener('click', () => {
+      if (activeTab === 'email' && outputPreview.innerHTML) {
+        try {
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = outputPreview.innerHTML;
+          tempDiv.style.position = 'fixed';
+          tempDiv.style.left = '-9999px';
+          document.body.appendChild(tempDiv);
+
+          const range = document.createRange();
+          range.selectNodeContents(tempDiv);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+          document.execCommand('copy');
+          selection.removeAllRanges();
+          document.body.removeChild(tempDiv);
+        } catch (err) {
+          copyPlainTextSafe(outputPreview.innerText);
+        }
+      } else {
+        copyPlainTextSafe(outputPreview.innerText);
+      }
+
+      const prevText = copyBtnText.innerText;
+      copyBtnText.innerText = 'Copied!';
+      showToast('Copied to clipboard!');
+      setTimeout(() => {
+        copyBtnText.innerText = prevText;
+      }, 1600);
+    });
+
+    // Event Listeners for Inputs
+    templateSelect.addEventListener('change', handleTemplateChange);
+    customerNameInput.addEventListener('input', updatePreview);
+    productNameInput.addEventListener('input', () => {
+      cfProductInput.value = productNameInput.value;
+      dlProductInput.value = productNameInput.value;
+      updatePreview();
+    });
+    locationSelect.addEventListener('change', updatePreview);
+    notesInput.addEventListener('input', updatePreview);
+    missingInfoTextInput.addEventListener('input', updatePreview);
+    freeMessageTextInput.addEventListener('input', updatePreview);
+    // Toggle Additional Notes visibility in Email Configuration
+    toggleNotesBtn.addEventListener('click', () => {
+      const isHidden = notesInputContainer.classList.contains('hidden');
+      if (isHidden) {
+        notesInputContainer.classList.remove('hidden');
+        toggleNotesBtnText.innerText = 'Remove Note';
+        notesInput.focus();
+      } else {
+        notesInputContainer.classList.add('hidden');
+        notesInput.value = '';
+        toggleNotesBtnText.innerText = 'Add Note';
+        updatePreview();
+      }
+    });
+    revisionCountInput.addEventListener('input', () => {
+      if (revisionCountInput.value === '') {
+        updatePreview();
+        return;
+      }
+      let val = parseInt(revisionCountInput.value, 10);
+      if (isNaN(val) || val < 0) val = 0;
+      if (val > 3) val = 3;
+      revisionCountInput.value = val;
+      updatePreview();
+    });
+
+    revisionCountInput.addEventListener('keydown', (e) => {
+      if (['e', 'E', '+', '-'].includes(e.key)) {
+        e.preventDefault();
+      }
+    });
+
+    // Add Document Button Listeners (Synchronized across Email Configuration, CF Notes & Design Live)
+    addDocBtn.addEventListener('click', () => {
+      sharedDocuments.push({ id: Date.now() + Math.random(), name: '', docId: '' });
+      renderDocRows();
+      renderCfDocRows();
+      renderDlDocRows();
+      updatePreview();
+    });
+
+    cfAddDocBtn.addEventListener('click', () => {
+      sharedDocuments.push({ id: Date.now() + Math.random(), name: '', docId: '' });
+      renderCfDocRows();
+      renderDocRows();
+      renderDlDocRows();
+      updatePreview();
+    });
+
+    dlAddDocBtn.addEventListener('click', () => {
+      sharedDocuments.push({ id: Date.now() + Math.random(), name: '', docId: '' });
+      renderDlDocRows();
+      renderDocRows();
+      renderCfDocRows();
+      updatePreview();
+    });
+
+    // CF Notes Event Listeners
+    cfTicketSelect.addEventListener('change', handleCfTicketChange);
+    cfFullDetailsCheckbox.addEventListener('change', handleCfTicketChange);
+    cfReasonInput.addEventListener('input', updatePreview);
+    cfProductInput.addEventListener('input', () => {
+      productNameInput.value = cfProductInput.value;
+      dlProductInput.value = cfProductInput.value;
+      updatePreview();
+    });
+    cfNotesInput.addEventListener('input', updatePreview);
+    cfAdobeStockInput.addEventListener('input', updatePreview);
+    cfFontsInput.addEventListener('input', updatePreview);
+    cfDriveLinkInput.addEventListener('input', updatePreview);
+    document.querySelectorAll('.cf-hashtag-cb').forEach(cb => {
+      cb.addEventListener('change', updatePreview);
+    });
+    document.querySelectorAll('.cf-software-cb').forEach(cb => {
+      cb.addEventListener('change', updatePreview);
+    });
+
+    // Design Live Event Listeners
+    dlStatusSelect.addEventListener('change', updatePreview);
+    document.querySelectorAll('input[name="dlPrepWork"]').forEach(r => r.addEventListener('change', updatePreview));
+    document.querySelectorAll('input[name="dlPostWork"]').forEach(r => r.addEventListener('change', updatePreview));
+    dlProductInput.addEventListener('input', () => {
+      productNameInput.value = dlProductInput.value;
+      cfProductInput.value = dlProductInput.value;
+      updatePreview();
+    });
+    dlAdobeStockInput.addEventListener('input', updatePreview);
+    dlFontsInput.addEventListener('input', updatePreview);
+    dlSessionNotesInput.addEventListener('input', updatePreview);
+    dlDriveLinkInput.addEventListener('input', updatePreview);
+    dlRecordingLinkInput.addEventListener('input', updatePreview);
+    dlPasscodeInput.addEventListener('input', updatePreview);
+    dlOtherHashtagsSelect.addEventListener('change', updatePreview);
+    document.querySelectorAll('.dl-software-cb').forEach(cb => {
+      cb.addEventListener('change', updatePreview);
+    });
+
+    // Reset functions per configuration tab
+    function resetEmailConfig() {
+      templateSelect.value = 'fresh';
+      customerNameInput.value = '';
+      productNameInput.value = '';
+      cfProductInput.value = '';
+      dlProductInput.value = '';
+      revisionCountInput.value = '3';
+      locationSelect.value = 'US';
+      notesInput.value = '';
+      notesInputContainer.classList.add('hidden');
+      toggleNotesBtnText.innerText = 'Add Note';
+      missingInfoTextInput.value = '';
+      freeMessageTextInput.value = '';
+      sharedDocuments = [{ id: Date.now(), name: '', docId: '' }];
+      handleTemplateChange();
+      renderDocRows();
+      renderCfDocRows();
+      renderDlDocRows();
+      updatePreview();
+    }
+
+    function resetCfConfig() {
+      cfTicketSelect.value = 'complete';
+      cfFullDetailsCheckbox.checked = false;
+      cfReasonInput.value = '';
+      cfProductInput.value = '';
+      productNameInput.value = '';
+      dlProductInput.value = '';
+      cfNotesInput.value = '';
+      cfAdobeStockInput.value = '';
+      cfFontsInput.value = '';
+      cfDriveLinkInput.value = '';
+      document.querySelectorAll('.cf-hashtag-cb').forEach(cb => {
+        cb.checked = false;
+      });
+      document.querySelectorAll('.cf-software-cb').forEach((cb, i) => {
+        cb.checked = i === 0;
+      });
+      sharedDocuments = [{ id: Date.now(), name: '', docId: '' }];
+      handleCfTicketChange();
+      renderCfDocRows();
+      renderDocRows();
+      renderDlDocRows();
+      updatePreview();
+    }
+
+    function resetDlConfig() {
+      dlStatusSelect.value = '#Completed';
+      document.querySelectorAll('input[name="dlPrepWork"]').forEach(r => { r.checked = r.value === 'No'; });
+      document.querySelectorAll('input[name="dlPostWork"]').forEach(r => { r.checked = r.value === 'No'; });
+      dlProductInput.value = '';
+      productNameInput.value = '';
+      cfProductInput.value = '';
+      dlAdobeStockInput.value = '';
+      dlFontsInput.value = '';
+      dlSessionNotesInput.value = '';
+      dlDriveLinkInput.value = '';
+      dlRecordingLinkInput.value = '';
+      dlPasscodeInput.value = '';
+      dlOtherHashtagsSelect.value = '#MinorOfferedMP';
+      document.querySelectorAll('.dl-software-cb').forEach((cb, i) => {
+        cb.checked = i === 0;
+      });
+      sharedDocuments = [{ id: Date.now(), name: '', docId: '' }];
+      renderDlDocRows();
+      renderDocRows();
+      renderCfDocRows();
+      updatePreview();
+    }
+
+    resetBtn.addEventListener('click', resetEmailConfig);
+    cfResetBtn.addEventListener('click', resetCfConfig);
+    dlResetBtn.addEventListener('click', resetDlConfig);
+
+    window.onload = function() {
+      handleTemplateChange();
+      renderDocRows();
+      handleCfTicketChange();
+      renderCfDocRows();
+      renderDlDocRows();
+      renderMarketDirectory();
+      renderBrandGuidelines();
+      updatePreview();
+    };
+  </script>
+</body>
+</html>
