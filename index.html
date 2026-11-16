@@ -27,9 +27,14 @@
 
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(circle at 10% 20%, #E3F1FD 0%, #EAF4FE 45%, #D7EAFC 95%);
+      background: linear-gradient(135deg, #D5E8FB 0%, #EBF4FE 48%, #DCEBFC 100%);
+      background-attachment: fixed;
       min-height: 100vh;
       color: #334155;
+    }
+
+    .main-workspace-bg {
+      background: linear-gradient(145deg, #F8FBFF 0%, #EDF5FE 52%, #E2EFFD 100%);
     }
 
     /* Soft Neumorphic / Glass Elevation Shadows inspired by the UI screenshot */
@@ -136,6 +141,188 @@
       border-radius: 9999px;
       letter-spacing: 0.03em;
     }
+
+    /* Dark Mode Overrides */
+    body.dark {
+      background: linear-gradient(135deg, #0B0B0D 0%, #141418 50%, #0E1117 100%);
+      background-attachment: fixed;
+      color: #E4E4E7;
+    }
+
+    body.dark .soft-card {
+      background-color: #18181B;
+      box-shadow: 0 18px 40px -6px rgba(0, 0, 0, 0.7),
+                  0 4px 16px -3px rgba(0, 0, 0, 0.5);
+      border-color: #27272A;
+    }
+
+    body.dark .sidebar-container {
+      background: rgba(20, 20, 23, 0.9);
+      border-color: #27272A;
+    }
+
+    body.dark .nav-icon-btn {
+      color: #A1A1AA;
+    }
+
+    body.dark .nav-icon-btn.active,
+    body.dark .nav-icon-btn:hover {
+      background-color: #27272A;
+      color: #60A5FA;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    body.dark .nav-icon-btn.active svg {
+      color: #60A5FA !important;
+    }
+
+    body.dark .main-workspace-bg {
+      background: linear-gradient(145deg, #121215 0%, #17171C 52%, #13161E 100%) !important;
+    }
+
+    body.dark header {
+      background-color: rgba(28, 28, 32, 0.92) !important;
+      border-color: #2E2E34 !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    body.dark .bg-white {
+      background-color: #1D1D21 !important;
+    }
+
+    body.dark .shadow-\[0_8px_30px_rgb\(58\,139\,218\,0\.08\)\],
+    body.dark .shadow-\[0_8px_28px_rgb\(58\,139\,218\,0\.07\)\] {
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45) !important;
+    }
+
+    body.dark .hover\:shadow-\[0_12px_32px_rgb\(4\,86\,162\,0\.14\)\]:hover {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65) !important;
+    }
+
+    body.dark .hover\:bg-\[\#F8FBFE\]:hover,
+    body.dark .hover\:bg-white:hover,
+    body.dark .focus\:bg-white:focus {
+      background-color: #242429 !important;
+    }
+
+    body.dark .bg-\[\#F8FBFE\],
+    body.dark .bg-\[\#F4F9FE\],
+    body.dark .bg-\[\#F1F7FE\],
+    body.dark .bg-\[\#FFFDF5\],
+    body.dark .bg-\[\#F0F9FF\] {
+      background-color: #161619 !important;
+    }
+
+    body.dark .bg-\[\#EBF4FD\],
+    body.dark .bg-\[\#EBF5FE\] {
+      background-color: rgba(58, 139, 218, 0.14) !important;
+    }
+
+    body.dark .hover\:bg-\[\#DCEBFC\]:hover,
+    body.dark .hover\:bg-\[\#E1EFFD\]:hover,
+    body.dark .hover\:bg-\[\#DDF0FD\]:hover,
+    body.dark .hover\:bg-\[\#E3F0FC\]:hover {
+      background-color: rgba(58, 139, 218, 0.24) !important;
+    }
+
+    body.dark .border-\[\#E1EEFA\],
+    body.dark .border-\[\#E2EEFA\],
+    body.dark .border-\[\#EDF4FC\],
+    body.dark .border-\[\#DCEBFC\],
+    body.dark .border-\[\#DEEDFC\],
+    body.dark .border-\[\#E2EDFA\],
+    body.dark .border-\[\#E3EEFA\],
+    body.dark .border-\[\#D5E5F7\],
+    body.dark .border-\[\#D7E6F6\],
+    body.dark .border-\[\#CDE1F7\],
+    body.dark .border-\[\#CEE4FA\],
+    body.dark .border-\[\#FDE68A\],
+    body.dark .border-\[\#BAE6FD\] {
+      border-color: #2C2C32 !important;
+    }
+
+    body.dark .text-slate-800,
+    body.dark .text-slate-700 {
+      color: #F4F4F5 !important;
+    }
+
+    body.dark .text-slate-600,
+    body.dark .text-slate-500 {
+      color: #D4D4D8 !important;
+    }
+
+    body.dark .text-slate-400 {
+      color: #A1A1AA !important;
+    }
+
+    body.dark .text-\[\#0456A2\],
+    body.dark .text-\[\#3A8BDA\],
+    body.dark .text-\[\#0369A1\],
+    body.dark .group-hover\:text-\[\#0456A2\]:hover,
+    body.dark .group:hover .group-hover\:text-\[\#0456A2\] {
+      color: #60A5FA !important;
+    }
+
+    body.dark .soft-input {
+      background-color: #141417 !important;
+      border-color: #2E2E35 !important;
+      color: #F4F4F5 !important;
+    }
+
+    body.dark .soft-input:focus {
+      border-color: #3A8BDA !important;
+      box-shadow: 0 0 0 3px rgba(58, 139, 218, 0.22) !important;
+    }
+
+    body.dark select.soft-input option {
+      background-color: #1D1D21;
+      color: #F4F4F5;
+    }
+
+    body.dark input[type="date"],
+    body.dark input[type="time"] {
+      color-scheme: dark;
+    }
+
+    body.dark .market-pill.active {
+      background-color: #2563EB !important;
+      color: #FFFFFF !important;
+      border-color: #2563EB !important;
+    }
+
+    body.dark footer {
+      border-color: #27272A !important;
+    }
+
+    /* Home Hero Background Image (Hosted CDN - no local download needed for GitHub deploy) */
+    .home-hero-bg {
+      background-image: url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.16;
+      transition: opacity 0.3s ease;
+    }
+
+    body.dark .home-hero-bg {
+      opacity: 0.11;
+      filter: grayscale(35%) contrast(105%);
+    }
+
+    /* Home Card Hover Lift & Top Accent Bar */
+    .home-feature-card {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+                  border-color 0.24s ease,
+                  background-color 0.24s ease;
+    }
+    .home-feature-card:hover {
+      transform: translateY(-4px);
+    }
+    .home-feature-card:active {
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 <body class="p-3 sm:p-5 md:p-8 flex items-center justify-center">
@@ -209,16 +396,29 @@
         </div>
       </div>
 
-      <!-- Sidebar Bottom Info Badge -->
-      <div class="hidden md:flex flex-col items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-[#3A8BDA]"></span>
-        <span class="w-2 h-2 rounded-full bg-[#DD3884]"></span>
-        <span class="w-2 h-2 rounded-full bg-[#F19914]"></span>
+      <!-- Sidebar Bottom Theme Toggle Button (Light / Dark Mode) -->
+      <div class="flex flex-row md:flex-col items-center">
+        <button 
+          type="button" 
+          id="themeToggleBtn" 
+          class="nav-icon-btn cursor-pointer" 
+          title="Switch to Dark Mode" 
+          aria-label="Toggle color theme"
+        >
+          <!-- Moon Icon (Shown in Light Mode to switch to Dark Mode) -->
+          <svg id="themeMoonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          <!-- Sun Icon (Shown in Dark Mode to switch to Light Mode) -->
+          <svg id="themeSunIcon" class="w-5 h-5 hidden text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+        </button>
       </div>
     </aside>
 
     <!-- Main Content Shell -->
-    <main class="flex-1 p-4 sm:p-6 md:p-7 flex flex-col gap-5 bg-gradient-to-br from-[#F7FBFF] to-[#EDF5FD] overflow-y-auto">
+    <main class="main-workspace-bg flex-1 p-4 sm:p-6 md:p-7 flex flex-col gap-5 overflow-y-auto">
       
       <!-- Top Header Pill Bar -->
       <header class="bg-white/90 backdrop-blur-sm rounded-full px-5 py-2.5 shadow-[0_6px_20px_rgba(58,139,218,0.08)] border border-[#E2EEFA] flex items-center justify-between gap-3">
@@ -241,128 +441,192 @@
       <!-- TAB 0: HOME PAGE WORKSPACE -->
       <div id="homeWorkspaceSection" class="flex-1 flex flex-col justify-center space-y-6 py-2">
         <!-- Welcome Hero Card -->
-        <div class="bg-white rounded-3xl p-6 sm:p-9 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] text-center space-y-3 relative overflow-hidden">
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-800 tracking-tight">
-            Welcome to Designer Hub!
-          </h1>
-          <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
-            An all-in-one internal platform for generating customer emails, CF ticket notes, and Design Live documentation, with quick access to regional market directories, a time zone converter, and brand guidelines.
-          </p>
+        <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-[0_12px_36px_rgb(58,139,218,0.10)] border border-[#D8E9FA] text-center space-y-5 relative overflow-hidden">
+          <!-- Low-opacity hosted creative studio photo overlay -->
+          <div class="home-hero-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+          <!-- Subtle Decorative Ambient Glows -->
+          <div class="absolute -top-20 -left-20 w-56 h-56 rounded-full bg-[#3A8BDA]/12 blur-3xl pointer-events-none" aria-hidden="true"></div>
+          <div class="absolute -bottom-24 -right-16 w-64 h-64 rounded-full bg-[#DD3884]/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+          <div class="relative z-10 space-y-3.5">
+            <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">
+              Welcome to <span class="bg-gradient-to-r from-[#0456A2] via-[#3A8BDA] to-[#0284C7] bg-clip-text text-transparent">Designer Hub!</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+              An all-in-one internal platform for generating customer emails, CF ticket notes, and Design Live documentation, with quick access to regional market directories, a time zone converter, and brand guidelines.
+            </p>
+          </div>
+
+          <!-- Live Regional Pulse Strip (Click opens Time Zone Converter) -->
+          <div class="relative z-10 pt-2">
+            <div onclick="switchTab('tz')" class="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-4 py-2 rounded-2xl bg-[#F4F9FE]/90 hover:bg-[#EBF4FD] border border-[#D8E8F8] transition-colors cursor-pointer" title="Open Time Zone Converter">
+              <span class="flex items-center gap-1.5 text-[11px] font-bold text-[#0456A2]">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>PH</span>
+                <span id="homeClockPh" class="font-mono-code text-slate-700">--:--</span>
+              </span>
+              <span class="text-slate-300">|</span>
+              <span class="flex items-center gap-1.5 text-[11px] font-bold text-[#0456A2]">
+                <span>US ET</span>
+                <span id="homeClockEt" class="font-mono-code text-slate-700">--:--</span>
+              </span>
+              <span class="text-slate-300">|</span>
+              <span class="flex items-center gap-1.5 text-[11px] font-bold text-[#0456A2]">
+                <span>UK/IE</span>
+                <span id="homeClockUk" class="font-mono-code text-slate-700">--:--</span>
+              </span>
+              <span class="text-slate-300">|</span>
+              <span class="flex items-center gap-1.5 text-[11px] font-bold text-[#0456A2]">
+                <span>AU SYD</span>
+                <span id="homeClockAu" class="font-mono-code text-slate-700">--:--</span>
+              </span>
+            </div>
+          </div>
         </div>
 
         <!-- Clickable Feature Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           <!-- Card 1: Email Configuration -->
-          <button type="button" onclick="switchTab('email')" class="group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_12px_32px_rgb(4,86,162,0.14)] border border-[#E1EEFA] hover:border-[#3A8BDA] transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="w-11 h-11 rounded-2xl bg-[#EBF4FD] group-hover:bg-[#0456A2] text-[#0456A2] group-hover:text-white flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                </svg>
+          <button type="button" onclick="switchTab('email')" class="home-feature-card group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_14px_34px_rgb(4,86,162,0.15)] border border-[#E1EEFA] hover:border-[#3A8BDA] cursor-pointer flex flex-col justify-between space-y-5">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0456A2] to-[#3A8BDA] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#EBF4FD] to-[#DCEBFC] group-hover:from-[#0456A2] group-hover:to-[#3A8BDA] text-[#0456A2] group-hover:text-white flex items-center justify-center shadow-xs transition-all duration-200 group-hover:scale-105">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
               </div>
               <div>
-                <h3 class="text-sm font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Email Configuration</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Generate Fresh Ticket, Revision, Missing Info, or custom customer emails with regional support details.</p>
+                <h3 class="text-base font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Email Configuration</h3>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Generate Fresh Ticket, Revision, Missing Info, Logo Design, or custom customer emails with regional support details.</p>
               </div>
             </div>
-            <div class="flex items-center gap-1 text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">
-              <span>Open Tool</span>
-              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"></path></svg>
+            <div class="flex items-center justify-between pt-2 border-t border-[#F1F6FC]">
+              <span class="text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">Open Tool</span>
+              <span class="w-7 h-7 rounded-full bg-[#F1F7FE] group-hover:bg-[#0456A2] text-[#0456A2] group-hover:text-white flex items-center justify-center transition-colors">
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+              </span>
             </div>
           </button>
 
           <!-- Card 2: CF Note Configuration -->
-          <button type="button" onclick="switchTab('cf')" class="group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_12px_32px_rgb(4,86,162,0.14)] border border-[#E1EEFA] hover:border-[#3A8BDA] transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="w-11 h-11 rounded-2xl bg-[#FFF7ED] group-hover:bg-[#F19914] text-[#B45309] group-hover:text-white flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
+          <button type="button" onclick="switchTab('cf')" class="home-feature-card group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_14px_34px_rgb(4,86,162,0.15)] border border-[#E1EEFA] hover:border-[#F19914] cursor-pointer flex flex-col justify-between space-y-5">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#D97706] to-[#F19914] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FFF7ED] to-[#FFEDD5] group-hover:from-[#D97706] group-hover:to-[#F19914] text-[#B45309] group-hover:text-white flex items-center justify-center shadow-xs transition-all duration-200 group-hover:scale-105">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </div>
               </div>
               <div>
-                <h3 class="text-sm font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">CF Note Configuration</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Build structured internal notes for Order Complete, Reschedule, Revision, Handover, and Escalations.</p>
+                <h3 class="text-base font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">CF Note Configuration</h3>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Build structured internal notes for Order Complete, Reschedule, Revision, Handover, and Escalations.</p>
               </div>
             </div>
-            <div class="flex items-center gap-1 text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">
-              <span>Open Tool</span>
-              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"></path></svg>
+            <div class="flex items-center justify-between pt-2 border-t border-[#F1F6FC]">
+              <span class="text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">Open Tool</span>
+              <span class="w-7 h-7 rounded-full bg-[#F1F7FE] group-hover:bg-[#F19914] text-[#B45309] group-hover:text-white flex items-center justify-center transition-colors">
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+              </span>
             </div>
           </button>
 
           <!-- Card 3: Design Live Documentation -->
-          <button type="button" onclick="switchTab('dl')" class="group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_12px_32px_rgb(4,86,162,0.14)] border border-[#E1EEFA] hover:border-[#3A8BDA] transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="w-11 h-11 rounded-2xl bg-[#F0F9FF] group-hover:bg-[#0369A1] text-[#0369A1] group-hover:text-white flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                </svg>
+          <button type="button" onclick="switchTab('dl')" class="home-feature-card group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_14px_34px_rgb(4,86,162,0.15)] border border-[#E1EEFA] hover:border-[#0284C7] cursor-pointer flex flex-col justify-between space-y-5">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0369A1] to-[#0EA5E9] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#F0F9FF] to-[#E0F2FE] group-hover:from-[#0369A1] group-hover:to-[#0EA5E9] text-[#0369A1] group-hover:text-white flex items-center justify-center shadow-xs transition-all duration-200 group-hover:scale-105">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                  </svg>
+                </div>
               </div>
               <div>
-                <h3 class="text-sm font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Design Live Documentation</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Document live design sessions with CF status, prep/post work flags, assets, recording links, and passcodes.</p>
+                <h3 class="text-base font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Design Live Documentation</h3>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Document live design sessions with CF status, prep/post work flags, assets, recording links, and passcodes.</p>
               </div>
             </div>
-            <div class="flex items-center gap-1 text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">
-              <span>Open Tool</span>
-              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"></path></svg>
+            <div class="flex items-center justify-between pt-2 border-t border-[#F1F6FC]">
+              <span class="text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">Open Tool</span>
+              <span class="w-7 h-7 rounded-full bg-[#F1F7FE] group-hover:bg-[#0369A1] text-[#0369A1] group-hover:text-white flex items-center justify-center transition-colors">
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+              </span>
             </div>
           </button>
 
           <!-- Card 4: Market Directory -->
-          <button type="button" onclick="switchTab('market')" class="group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_12px_32px_rgb(4,86,162,0.14)] border border-[#E1EEFA] hover:border-[#3A8BDA] transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="w-11 h-11 rounded-2xl bg-[#ECFDF5] group-hover:bg-[#059669] text-[#059669] group-hover:text-white flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+          <button type="button" onclick="switchTab('market')" class="home-feature-card group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_14px_34px_rgb(4,86,162,0.15)] border border-[#E1EEFA] hover:border-[#059669] cursor-pointer flex flex-col justify-between space-y-5">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#059669] to-[#10B981] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#ECFDF5] to-[#D1FAE5] group-hover:from-[#059669] group-hover:to-[#10B981] text-[#059669] group-hover:text-white flex items-center justify-center shadow-xs transition-all duration-200 group-hover:scale-105">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
               </div>
               <div>
-                <h3 class="text-sm font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Market Directory</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Access regional support phone numbers, operating hours, and quick customer links across US, CA, AU, NZ, UK, SG, and IE.</p>
+                <h3 class="text-base font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Market Directory</h3>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Access regional support phone numbers, operating hours, and quick customer links across US, CA, AU, NZ, UK, SG, and IE.</p>
               </div>
             </div>
-            <div class="flex items-center gap-1 text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">
-              <span>Open Directory</span>
-              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"></path></svg>
+            <div class="flex items-center justify-between pt-2 border-t border-[#F1F6FC]">
+              <span class="text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">Open Directory</span>
+              <span class="w-7 h-7 rounded-full bg-[#F1F7FE] group-hover:bg-[#059669] text-[#059669] group-hover:text-white flex items-center justify-center transition-colors">
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+              </span>
             </div>
           </button>
 
           <!-- Card 5: Time Zone Converter -->
-          <button type="button" onclick="switchTab('tz')" class="group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_12px_32px_rgb(4,86,162,0.14)] border border-[#E1EEFA] hover:border-[#3A8BDA] transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="w-11 h-11 rounded-2xl bg-[#EEF2FF] group-hover:bg-[#4F46E5] text-[#4F46E5] group-hover:text-white flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+          <button type="button" onclick="switchTab('tz')" class="home-feature-card group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_14px_34px_rgb(4,86,162,0.15)] border border-[#E1EEFA] hover:border-[#4F46E5] cursor-pointer flex flex-col justify-between space-y-5">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#4F46E5] to-[#6366F1] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#EEF2FF] to-[#E0E7FF] group-hover:from-[#4F46E5] group-hover:to-[#6366F1] text-[#4F46E5] group-hover:text-white flex items-center justify-center shadow-xs transition-all duration-200 group-hover:scale-105">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </div>
               </div>
               <div>
-                <h3 class="text-sm font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Time Zone Converter</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Convert times and schedules effortlessly across PH, US, CA, UK, IE, SG, AU, and NZ.</p>
+                <h3 class="text-base font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Time Zone Converter</h3>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Convert times and schedules effortlessly across PH, US, CA, UK, IE, SG, AU, and NZ.</p>
               </div>
             </div>
-            <div class="flex items-center gap-1 text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">
-              <span>Open Converter</span>
-              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"></path></svg>
+            <div class="flex items-center justify-between pt-2 border-t border-[#F1F6FC]">
+              <span class="text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">Open Converter</span>
+              <span class="w-7 h-7 rounded-full bg-[#F1F7FE] group-hover:bg-[#4F46E5] text-[#4F46E5] group-hover:text-white flex items-center justify-center transition-colors">
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+              </span>
             </div>
           </button>
 
           <!-- Card 6: Brand Guidelines -->
-          <button type="button" onclick="switchTab('brand')" class="group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_12px_32px_rgb(4,86,162,0.14)] border border-[#E1EEFA] hover:border-[#3A8BDA] transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="w-11 h-11 rounded-2xl bg-[#FDF2F8] group-hover:bg-[#DD3884] text-[#DD3884] group-hover:text-white flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                </svg>
+          <button type="button" onclick="switchTab('brand')" class="home-feature-card group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_14px_34px_rgb(4,86,162,0.15)] border border-[#E1EEFA] hover:border-[#DD3884] cursor-pointer flex flex-col justify-between space-y-5">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#DD3884] to-[#EC4899] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <div class="space-y-3.5">
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#FDF2F8] to-[#FCE7F3] group-hover:from-[#DD3884] group-hover:to-[#EC4899] text-[#DD3884] group-hover:text-white flex items-center justify-center shadow-xs transition-all duration-200 group-hover:scale-105">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                  </svg>
+                </div>
               </div>
               <div>
-                <h3 class="text-sm font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Brand Guidelines</h3>
-                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Verify official logo usage and trademark rules for Meta, Google, Amazon, LinkedIn, YouTube, TikTok, X, and more.</p>
+                <h3 class="text-base font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">Brand Guidelines</h3>
+                <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">Verify official logo usage and trademark rules for Meta, Google, Amazon, LinkedIn, YouTube, TikTok, X, and more.</p>
               </div>
             </div>
-            <div class="flex items-center gap-1 text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">
-              <span>Open Guidelines</span>
-              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"></path></svg>
+            <div class="flex items-center justify-between pt-2 border-t border-[#F1F6FC]">
+              <span class="text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">Open Guidelines</span>
+              <span class="w-7 h-7 rounded-full bg-[#F1F7FE] group-hover:bg-[#DD3884] text-[#DD3884] group-hover:text-white flex items-center justify-center transition-colors">
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+              </span>
             </div>
           </button>
         </div>
@@ -405,6 +669,7 @@
                   <option value="fresh">Fresh Ticket</option>
                   <option value="revision">Revision</option>
                   <option value="missing">Missing Information</option>
+                  <option value="logo">Logo Design</option>
                   <option value="free">Free Template</option>
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#3A8BDA]">
@@ -1665,6 +1930,11 @@
         notesWrapper.classList.add('hidden');
         docsWrapper.classList.add('hidden');
         missingWrapper.classList.remove('hidden');
+      } else if (tpl === 'logo') {
+        productWrapper.classList.add('hidden');
+        revisionWrapper.classList.add('hidden');
+        notesWrapper.classList.add('hidden');
+        docsWrapper.classList.add('hidden');
       } else if (tpl === 'free') {
         productWrapper.classList.add('hidden');
         revisionWrapper.classList.add('hidden');
@@ -1708,7 +1978,9 @@
 
       let html = '';
 
-      if (tpl === 'free') {
+      if (tpl === 'logo') {
+        html = `Hi, ${customer}\n\nThank you for submitting your design request!\n\nAfter reviewing your instructions, it appears that you may be looking for a logo design. We’d like to clarify that logo creation is offered through a separate service specifically tailored to help bring your brand identity to life.\n\nIf you’re interested in having a logo designed, we offer the following options:\n\n1. Free Logomaker\nvistaprint.com/logomaker/wizard?tenantName=vista_logos\n\nA free, easy-to-use DIY tool that allows you to create your own logo quickly and conveniently.\n\n2. Essential Logo Package\nvistaprint.com/design/logo-essential\n\nWork with a professional designer who will take the time to understand your business, requirements, and preferences before presenting initial logo concepts.\n\n3. Start a Contest\n99designs.com/launch/…/designs\n\nLaunch a design contest where multiple professional designers can submit logo concepts, giving you a variety of creative options to choose from.\n\nIn the meantime, we will be cancelling your current design request so you can submit a new request through the appropriate logo design service.\n\nWe truly appreciate your business and the opportunity to support your creative needs.\n\nThank you for choosing VistaPrint!\n\nRegards,\nVistaPrint’s Design Services Team\n${escapeHtml(regionData.contact)}`;
+      } else if (tpl === 'free') {
         const freeMsgRaw = document.getElementById('freeMessageText').value.trim();
         const freeMsg = freeMsgRaw !== '' ? escapeHtml(freeMsgRaw) : '[Message]';
         html = `Hi ${customer},\n\nThank you for choosing Vistaprint!\n\n${freeMsg}\n\nWe appreciate your patience and look forward to bringing your design to life.\n\nRegards,\nVistaPrint's Design Services Team\n${escapeHtml(regionData.contact)}`;
@@ -2361,14 +2633,67 @@
       document.getElementById('tzTimeInput').addEventListener('input', renderTimeZoneCards);
       document.getElementById('tzNowBtn').addEventListener('click', setTzToCurrentTime);
 
+      // Theme Toggle (Light / Dark Mode)
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      const themeMoonIcon = document.getElementById('themeMoonIcon');
+      const themeSunIcon = document.getElementById('themeSunIcon');
+
+      function applyTheme(isDark) {
+        if (isDark) {
+          document.body.classList.add('dark');
+          themeMoonIcon.classList.add('hidden');
+          themeSunIcon.classList.remove('hidden');
+          themeToggleBtn.title = 'Switch to Light Mode';
+        } else {
+          document.body.classList.remove('dark');
+          themeSunIcon.classList.add('hidden');
+          themeMoonIcon.classList.remove('hidden');
+          themeToggleBtn.title = 'Switch to Dark Mode';
+        }
+      }
+
+      const savedTheme = localStorage.getItem('designerHubTheme');
+      if (savedTheme === 'dark') {
+        applyTheme(true);
+      }
+
+      themeToggleBtn.addEventListener('click', () => {
+        const nextIsDark = !document.body.classList.contains('dark');
+        applyTheme(nextIsDark);
+        localStorage.setItem('designerHubTheme', nextIsDark ? 'dark' : 'light');
+      });
+
+      // Live Regional Clocks on Home Page Hero Strip
+      function updateHomeClocks() {
+        const now = new Date();
+        const zones = [
+          { id: 'homeClockPh', tz: 'Asia/Manila' },
+          { id: 'homeClockEt', tz: 'America/New_York' },
+          { id: 'homeClockUk', tz: 'Europe/London' },
+          { id: 'homeClockAu', tz: 'Australia/Sydney' }
+        ];
+        zones.forEach(item => {
+          const el = document.getElementById(item.id);
+          if (!el) return;
+          el.textContent = new Intl.DateTimeFormat('en-US', {
+            timeZone: item.tz,
+            hour: 'numeric',
+            minute: '2-digit',
+            hour12: true
+          }).format(now);
+        });
+      }
+      updateHomeClocks();
+      setInterval(updateHomeClocks, 15000);
+
       // Initial Setup
       renderAllDocumentRows();
       switchTab('home');
     });
   </script>
   <script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
+  if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
   }
 </script>
 </body>
