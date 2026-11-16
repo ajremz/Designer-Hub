@@ -1285,9 +1285,9 @@
               </div>
             </div>
 
-            <!-- Other Hashtags Dropdown -->
+            <!-- Hashtag Dropdown -->
             <div>
-              <label for="dlOtherHashtagsSelect" class="form-section-title block mb-1 text-[#3A8BDA]">Other Hashtags</label>
+              <label for="dlOtherHashtagsSelect" class="form-section-title block mb-1 text-[#3A8BDA]">Hashtag</label>
               <div class="relative">
                 <select 
                   id="dlOtherHashtagsSelect" 
@@ -1360,7 +1360,7 @@
               </svg>
               <span id="toastMsg">Copied to clipboard!</span>
             </div>
-            <span class="text-[11px] text-slate-500 font-medium">Ready for Notion / Mail</span>
+            <span class="text-[11px] text-slate-500 font-medium">Ready to Paste</span>
           </div>
         </div>
 
@@ -2219,7 +2219,7 @@
 
       const otherHashtag = document.getElementById('dlOtherHashtagsSelect').value;
 
-      const dlText = `- CF Status: ${cfStatus}\n- Prep Work: ${prepWork}\n- Post Work: ${postWork}\n- Product: ${product}\n- Assets Used:\n       • Adobe Stock Used: ${adobeStock}\n       • Fonts Used: ${fonts}\n- Software: ${softwareText}\n- Document ID:\n${docsList}\n- About the Session:\n${sessionBullets}\n- Reference Links:\n       • Google Drive: ${driveLink}\n       • Recording Link: ${recLink}\n       • Passcode: ${passcode}\n- Other Hashtags: ${otherHashtag}`;
+      const dlText = `- CF Status: ${cfStatus}\n- Prep Work: ${prepWork}\n- Post Work: ${postWork}\n- Product: ${product}\n- Assets Used:\n       • Adobe Stock Used: ${adobeStock}\n       • Fonts Used: ${fonts}\n- Software: ${softwareText}\n- Document ID:\n${docsList}\n- About the Session:\n${sessionBullets}\n- Reference Links:\n       • Google Drive: ${driveLink}\n       • Recording Link: ${recLink}\n       • Passcode: ${passcode}\n- Hashtag: ${otherHashtag}`;
 
       document.getElementById('outputPreview').textContent = dlText;
     }
