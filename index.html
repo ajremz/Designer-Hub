@@ -634,6 +634,86 @@
             </div>
           </button>
         </div>
+
+        <!-- Compact Reference Panel: Legal Time to Contact Customers -->
+        <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] border border-[#E1EEFA] space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#EDF4FC]">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-xl bg-[#EBF4FD] text-[#0456A2] flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-800">Legal Time to Contact Customers</h3>
+                <p class="text-[11px] text-slate-400">Permitted outbound call windows in each customer's local time</p>
+              </div>
+            </div>
+            <span class="badge-pill bg-[#F1F7FE] text-[#0456A2] border border-[#DCEBFC] self-start sm:self-center">Customer Local Time</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <!-- US -->
+            <div class="p-3.5 rounded-2xl bg-[#F8FBFE] border border-[#E3EEFA] space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800">United States</span>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-[#EBF4FD] text-[#0456A2]">US</span>
+              </div>
+              <p class="text-xs font-semibold text-[#0456A2]">8:00 AM – 9:00 PM (Daily)</p>
+              <p class="text-[11px] text-slate-400 leading-snug">No weekend calls in AL, LA, MS, RI, SD, UT.</p>
+            </div>
+
+            <!-- Canada -->
+            <div class="p-3.5 rounded-2xl bg-[#F8FBFE] border border-[#E3EEFA] space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800">Canada</span>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-[#EBF4FD] text-[#0456A2]">CA</span>
+              </div>
+              <p class="text-xs font-semibold text-[#0456A2]">9:00 AM – 9:30 PM (Daily)</p>
+              <p class="text-[11px] text-slate-400 leading-snug">No weekend restrictions.</p>
+            </div>
+
+            <!-- United Kingdom -->
+            <div class="p-3.5 rounded-2xl bg-[#F8FBFE] border border-[#E3EEFA] space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800">United Kingdom</span>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-[#FDF2F8] text-[#DD3884]">UK</span>
+              </div>
+              <p class="text-xs font-semibold text-[#0456A2]">Mon–Sat: 8:00 AM – 9:00 PM</p>
+              <p class="text-[11px] text-slate-400 leading-snug">Sun &amp; Bank Holidays: 9:00 AM – 9:00 PM (best practice: 10 AM – 4 PM or avoid).</p>
+            </div>
+
+            <!-- Australia -->
+            <div class="p-3.5 rounded-2xl bg-[#F8FBFE] border border-[#E3EEFA] space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800">Australia</span>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-[#FFF7ED] text-[#B45309]">AU</span>
+              </div>
+              <p class="text-xs font-semibold text-[#0456A2]">Mon–Fri: 9 AM – 8 PM &bull; Sat: 9 AM – 5 PM</p>
+              <p class="text-[11px] text-slate-400 leading-snug">Not permitted on Sundays.</p>
+            </div>
+
+            <!-- Singapore -->
+            <div class="p-3.5 rounded-2xl bg-[#F8FBFE] border border-[#E3EEFA] space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800">Singapore</span>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-[#ECFDF5] text-[#059669]">SG</span>
+              </div>
+              <p class="text-xs font-semibold text-[#0456A2]">Mon–Fri: 8 AM – 9 PM &bull; Sat: 9 AM – 6 PM</p>
+              <p class="text-[11px] text-slate-400 leading-snug">Not permitted on Sundays or regular holidays.</p>
+            </div>
+
+            <!-- New Zealand -->
+            <div class="p-3.5 rounded-2xl bg-[#F8FBFE] border border-[#E3EEFA] space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800">New Zealand</span>
+                <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-md bg-[#F0F9FF] text-[#0369A1]">NZ</span>
+              </div>
+              <p class="text-xs font-semibold text-[#0456A2]">8:00 AM – 9:00 PM (Daily)</p>
+              <p class="text-[11px] text-slate-400 leading-snug">No weekend restrictions.</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Main Layout: Form (Left) & Realtime Output (Right) -->
