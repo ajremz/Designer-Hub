@@ -294,6 +294,14 @@
       border-color: #2563EB !important;
     }
 
+    body.dark .hvc-subtab.active,
+    body.dark .hvc-scenario-btn.active,
+    body.dark .hvc-calltype-btn.active {
+      background-color: #2563EB !important;
+      color: #FFFFFF !important;
+      border-color: #2563EB !important;
+    }
+
     body.dark footer {
       border-color: #27272A !important;
     }
@@ -397,27 +405,14 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
             </svg>
           </button>
-        </div>
-      </div>
 
-      <!-- Sidebar Bottom Theme Toggle Button (Light / Dark Mode) -->
-      <div class="flex flex-row md:flex-col items-center">
-        <button 
-          type="button" 
-          id="themeToggleBtn" 
-          class="nav-icon-btn cursor-pointer" 
-          title="Switch to Dark Mode" 
-          aria-label="Toggle color theme"
-        >
-          <!-- Moon Icon (Shown in Light Mode to switch to Dark Mode) -->
-          <svg id="themeMoonIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-          </svg>
-          <!-- Sun Icon (Shown in Dark Mode to switch to Light Mode) -->
-          <svg id="themeSunIcon" class="w-5 h-5 hidden text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
-          </svg>
-        </button>
+          <!-- Tab 7: HVC Design Customers Button -->
+          <button type="button" id="tabHvcBtn" class="nav-icon-btn" title="HVC Design Customers">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </aside>
 
@@ -440,6 +435,24 @@
             class="bg-transparent text-sm font-bold text-slate-800 focus:outline-none w-full truncate cursor-pointer"
           />
         </div>
+
+        <!-- Top-Right Light / Dark Mode Toggle Button -->
+        <button 
+          type="button" 
+          id="themeToggleBtn" 
+          class="w-8 h-8 rounded-full bg-[#F1F7FE] hover:bg-[#E1EFFD] text-[#0456A2] flex items-center justify-center shrink-0 transition-colors cursor-pointer" 
+          title="Switch to Dark Mode" 
+          aria-label="Toggle color theme"
+        >
+          <!-- Moon Icon (Shown in Light Mode to switch to Dark Mode) -->
+          <svg id="themeMoonIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          <!-- Sun Icon (Shown in Dark Mode to switch to Light Mode) -->
+          <svg id="themeSunIcon" class="w-4 h-4 hidden text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+        </button>
       </header>
 
       <!-- TAB 0: HOME PAGE WORKSPACE -->
@@ -633,6 +646,30 @@
               </span>
             </div>
           </button>
+
+          <!-- Card 7: HVC Design Customers -->
+          <button type="button" onclick="switchTab('hvc')" class="home-feature-card group text-left bg-white hover:bg-[#F8FBFE] rounded-3xl p-5 sm:p-6 shadow-[0_8px_28px_rgb(58,139,218,0.07)] hover:shadow-[0_14px_34px_rgb(4,86,162,0.15)] border border-[#E1EEFA] hover:border-[#0D9488] cursor-pointer flex flex-col justify-between space-y-5 sm:col-span-2 lg:col-span-3">
+            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#0D9488] to-[#14B8A6] opacity-80 group-hover:opacity-100 transition-opacity"></div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-start sm:items-center gap-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#F0FDFA] to-[#CCFBF1] group-hover:from-[#0D9488] group-hover:to-[#14B8A6] text-[#0D9488] group-hover:text-white flex items-center justify-center shadow-xs transition-all duration-200 group-hover:scale-105 shrink-0">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-800 group-hover:text-[#0456A2] transition-colors">HVC Design Customers</h3>
+                  <p class="text-xs text-slate-400 mt-1 leading-relaxed">Outbound follow-up call spiels (Scenarios A–D &amp; Voicemails 1–2), customer follow-up email builder, and call documentation notes.</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 shrink-0 self-end sm:self-center">
+                <span class="text-xs font-bold text-[#3A8BDA] group-hover:text-[#0456A2]">Open HVC Workspace</span>
+                <span class="w-7 h-7 rounded-full bg-[#F1F7FE] group-hover:bg-[#0D9488] text-[#0D9488] group-hover:text-white flex items-center justify-center transition-colors">
+                  <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" d="M9 5l7 7-7 7"></path></svg>
+                </span>
+              </div>
+            </div>
+          </button>
         </div>
 
         <!-- Compact Reference Panel: Legal Time to Contact Customers -->
@@ -752,7 +789,9 @@
                 >
                   <option value="fresh">Fresh Ticket</option>
                   <option value="revision">Revision</option>
+                  <option value="submitrevision">Submit Revision</option>
                   <option value="missing">Missing Information</option>
+                  <option value="lowres">Low Resolution</option>
                   <option value="logo">Logo Design</option>
                   <option value="free">Free Template</option>
                 </select>
@@ -766,7 +805,7 @@
 
             <!-- Customer & Product -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-              <div>
+              <div id="customerFieldWrapper">
                 <label for="customerName" class="form-section-title block mb-1.5">Customer Name</label>
                 <input 
                   type="text" 
@@ -962,13 +1001,28 @@
 
             <!-- Reason Field (for Handover / Escalate) -->
             <div id="cfReasonWrapper" class="hidden">
-              <label for="cfReasonInput" class="form-section-title block mb-1.5 text-[#DD3884]">Reason</label>
-              <input 
-                type="text" 
-                id="cfReasonInput" 
-                placeholder="e.g. Shift ended, specialized vector illustration needed, complex logo recreation..." 
-                class="soft-input w-full px-3.5 py-2.5 font-medium placeholder-slate-400"
-              />
+              <label for="cfReasonSelect" class="form-section-title block mb-1.5 text-[#DD3884]">Reason</label>
+              <div class="relative">
+                <select 
+                  id="cfReasonSelect" 
+                  class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-semibold text-slate-800 bg-white cursor-pointer"
+                >
+                  <option value="Callback Request">Callback Request</option>
+                  <option value="Cancellation/Refund Requested">Cancellation/Refund Requested</option>
+                  <option value="Content Creation Requests">Content Creation Requests</option>
+                  <option value="Illegal/Inappropriate Content">Illegal/Inappropriate Content</option>
+                  <option value="Image Copyright Policy">Image Copyright Policy</option>
+                  <option value="Order Placement Issues">Order Placement Issues</option>
+                  <option value="Repeat Inquiries">Repeat Inquiries</option>
+                  <option value="Test/Duplicate DR">Test/Duplicate DR</option>
+                  <option value="Wrong Service Type">Wrong Service Type</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#DD3884]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
             </div>
 
             <!-- Product Field (for Complete / Revision) -->
@@ -980,6 +1034,30 @@
                 placeholder="e.g. Standard Business Cards / Tri-fold Brochure" 
                 class="soft-input w-full px-3.5 py-2.5 font-medium placeholder-slate-400"
               />
+            </div>
+
+            <!-- Call Status Dropdown -->
+            <div id="cfCallStatusWrapper">
+              <label for="cfCallStatusSelect" class="form-section-title block mb-1.5 text-[#0456A2]">Call Status</label>
+              <div class="relative">
+                <select 
+                  id="cfCallStatusSelect" 
+                  class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-semibold text-slate-800 bg-white cursor-pointer"
+                >
+                  <option value="Successfully contacted the customer.">Successfully contacted the customer.</option>
+                  <option value="Too early to call, sent an email instead.">Too early to call, sent an email instead.</option>
+                  <option value="Too early to call, need to reschedule.">Too early to call, need to reschedule.</option>
+                  <option value="Too late to call, sent an email instead.">Too late to call, sent an email instead.</option>
+                  <option value="Too late to call, need to reschedule.">Too late to call, need to reschedule.</option>
+                  <option value="Unable to reach, left a voicemail.">Unable to reach, left a voicemail.</option>
+                  <option value="No phone details, sent an email instead.">No phone details, sent an email instead.</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#3A8BDA]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
             </div>
 
             <!-- CF Notes Field -->
@@ -1553,6 +1631,349 @@
         </div>
       </div>
 
+      <!-- TAB 7: HVC DESIGN CUSTOMERS WORKSPACE -->
+      <div id="hvcWorkspaceSection" class="hidden flex-1 flex flex-col space-y-5">
+        
+        <!-- Top Shared Customer Context Bar (Above the Horizontal Sub-Tabs) -->
+        <div class="bg-white rounded-3xl p-5 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#EDF4FC]">
+            <div>
+              <h2 class="text-base font-bold text-slate-800">HVC Design Customers</h2>
+              <p class="text-xs text-slate-400 mt-0.5">Outbound follow-up spiels, customer emails, and call notes synced to customer details</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <div id="hvcToastBox" class="px-3 py-1.5 bg-[#EBF9F1] border border-[#C6EFD8] rounded-full flex items-center gap-1.5 text-xs text-[#0D6832] transition-all opacity-0 pointer-events-none">
+                <svg class="w-3.5 h-3.5 text-[#10B981] shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+                <span id="hvcToastMsg" class="font-semibold">Copied!</span>
+              </div>
+              <button 
+                type="button" 
+                id="hvcResetBtn" 
+                class="px-3 py-1 rounded-full text-xs font-semibold text-slate-600 hover:text-[#0456A2] bg-[#F1F7FE] hover:bg-[#E1EFFD] border border-[#DCEBFC] transition-colors cursor-pointer flex items-center gap-1.5 shrink-0"
+                title="Reset HVC Fields"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+                Reset
+              </button>
+            </div>
+          </div>
+
+          <!-- Shared Inputs: Customer Name, Product, Order Date, Locale Region (+ Optional Designer Name) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+            <div>
+              <label for="hvcCustomerName" class="form-section-title block mb-1.5">Customer Name</label>
+              <input 
+                type="text" 
+                id="hvcCustomerName" 
+                placeholder="e.g. Jordan Taylor" 
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-medium"
+              />
+            </div>
+
+            <div>
+              <label for="hvcProductName" class="form-section-title block mb-1.5">Product</label>
+              <input 
+                type="text" 
+                id="hvcProductName" 
+                placeholder="e.g. Standard Business Cards" 
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-medium"
+              />
+            </div>
+
+            <div class="min-w-0">
+              <label for="hvcOrderDate" class="form-section-title block mb-1.5">Order Date</label>
+              <input 
+                type="date" 
+                id="hvcOrderDate" 
+                class="soft-input w-full min-w-0 px-3 py-2.5 font-semibold text-slate-800 cursor-pointer"
+              />
+            </div>
+
+            <div>
+              <label for="hvcRegionSelect" class="form-section-title block mb-1.5">Locale Region</label>
+              <div class="relative">
+                <select 
+                  id="hvcRegionSelect" 
+                  class="soft-input w-full px-3.5 py-2.5 appearance-none pr-9 font-semibold text-slate-700 bg-white cursor-pointer"
+                >
+                  <option value="US">US - United States</option>
+                  <option value="UK">UK - United Kingdom</option>
+                  <option value="IE">IE - Ireland</option>
+                  <option value="NZ">NZ - New Zealand</option>
+                  <option value="SG">SG - Singapore</option>
+                  <option value="AU">AU - Australia</option>
+                  <option value="CA">CA - Canada</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#3A8BDA]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="hvcDesignerName" class="form-section-title block mb-1.5">Your Name</label>
+              <input 
+                type="text" 
+                id="hvcDesignerName" 
+                placeholder="e.g. AJ" 
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-medium"
+              />
+            </div>
+          </div>
+
+          <!-- Horizontal Sub-Tabs Bar (Spiels | Email Configuration | Note) -->
+          <div class="flex flex-wrap items-center gap-2 pt-3 border-t border-[#EDF4FC]">
+            <button 
+              type="button" 
+              id="hvcSubTabSpielsBtn" 
+              onclick="switchHvcSubTab('spiels')" 
+              class="hvc-subtab active px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#0456A2] text-white shadow-sm flex items-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+              Spiels
+            </button>
+            <button 
+              type="button" 
+              id="hvcSubTabEmailBtn" 
+              onclick="switchHvcSubTab('email')" 
+              class="hvc-subtab px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6] flex items-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              Email Configuration
+            </button>
+            <button 
+              type="button" 
+              id="hvcSubTabNoteBtn" 
+              onclick="switchHvcSubTab('note')" 
+              class="hvc-subtab px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6] flex items-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+              Note
+            </button>
+          </div>
+        </div>
+
+        <!-- SUB-TAB 1: SPIELS -->
+        <div id="hvcSpielsSection" class="space-y-5">
+          
+          <!-- Opening Spiel / Voicemail 1 / Voicemail 2 Switcher Card -->
+          <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] space-y-3.5">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#EDF4FC]">
+              <div class="flex flex-wrap items-center gap-2">
+                <button 
+                  type="button" 
+                  data-calltype="opening" 
+                  onclick="selectHvcCallType('opening')" 
+                  class="hvc-calltype-btn active px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#0456A2] text-white shadow-sm"
+                >
+                  Opening Spiel
+                </button>
+                <button 
+                  type="button" 
+                  data-calltype="vm1" 
+                  onclick="selectHvcCallType('vm1')" 
+                  class="hvc-calltype-btn px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]"
+                >
+                  Voicemail 1
+                </button>
+                <button 
+                  type="button" 
+                  data-calltype="vm2" 
+                  onclick="selectHvcCallType('vm2')" 
+                  class="hvc-calltype-btn px-4 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer bg-[#F4F9FE] text-slate-600 hover:bg-[#E3F0FC] border border-[#D7E6F6]"
+                >
+                  Voicemail 2
+                </button>
+              </div>
+            </div>
+            <div id="hvcOpeningSpielBox" class="p-4 rounded-2xl bg-[#F8FBFE] border border-[#DEEDFC] text-xs sm:text-[13px] leading-relaxed text-[#0456A2] whitespace-pre-wrap font-bold"></div>
+          </div>
+
+          <!-- Scenarios Selector Panel -->
+          <div id="hvcScenariosPanel" class="bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] space-y-4">
+            <div class="space-y-1">
+              <h3 class="text-sm font-bold text-slate-800">Scenarios</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Give the customer time to respond. Listen to what they have to say and understand if there's anything keeping them from moving forward with their order. Depending on their response, use the appropriate scenarios.
+              </p>
+            </div>
+
+            <!-- 4 Scenario Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+              <button 
+                type="button" 
+                data-scenario="A" 
+                onclick="selectHvcScenario('A')" 
+                class="hvc-scenario-btn active text-left p-3.5 rounded-2xl border transition-all cursor-pointer bg-[#0456A2] text-white border-[#0456A2] shadow-sm"
+              >
+                <div class="text-[11px] font-extrabold uppercase tracking-wider opacity-85">Scenario A</div>
+                <div class="text-xs font-bold mt-0.5 leading-snug">Customer is Ready to Order / No Further Assistance Needed</div>
+              </button>
+
+              <button 
+                type="button" 
+                data-scenario="B" 
+                onclick="selectHvcScenario('B')" 
+                class="hvc-scenario-btn text-left p-3.5 rounded-2xl border transition-all cursor-pointer bg-[#F8FBFE] text-slate-700 hover:bg-[#EBF4FD] border-[#DCEBFC]"
+              >
+                <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#3A8BDA]">Scenario B</div>
+                <div class="text-xs font-bold mt-0.5 leading-snug">Customer Needs Further Design Assistance</div>
+              </button>
+
+              <button 
+                type="button" 
+                data-scenario="C" 
+                onclick="selectHvcScenario('C')" 
+                class="hvc-scenario-btn text-left p-3.5 rounded-2xl border transition-all cursor-pointer bg-[#F8FBFE] text-slate-700 hover:bg-[#EBF4FD] border-[#DCEBFC]"
+              >
+                <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#3A8BDA]">Scenario C</div>
+                <div class="text-xs font-bold mt-0.5 leading-snug">Customer is Not Ready to Order</div>
+              </button>
+
+              <button 
+                type="button" 
+                data-scenario="D" 
+                onclick="selectHvcScenario('D')" 
+                class="hvc-scenario-btn text-left p-3.5 rounded-2xl border transition-all cursor-pointer bg-[#F8FBFE] text-slate-700 hover:bg-[#EBF4FD] border-[#DCEBFC]"
+              >
+                <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#3A8BDA]">Scenario D</div>
+                <div class="text-xs font-bold mt-0.5 leading-snug">Customer is Unavailable or Not Willing to Talk</div>
+              </button>
+            </div>
+
+            <!-- Dynamic Scenario Output Panel -->
+            <div id="hvcScenarioDisplayContainer" class="pt-2">
+              <!-- Injected dynamically via renderHvcSpiels() -->
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-TAB 2: HVC EMAIL CONFIGURATION -->
+        <div id="hvcEmailSection" class="hidden">
+          <div class="bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-[#EDF4FC]">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-[#EBF5FE] text-[#0456A2] flex items-center justify-center font-bold text-xs">✉</div>
+                  <h3 class="text-base font-bold text-slate-800">Generated HVC Email</h3>
+                </div>
+                <button 
+                  type="button" 
+                  onclick="copyHvcRichEmail()" 
+                  class="primary-btn px-4 py-2 rounded-full font-bold text-xs flex items-center gap-2 cursor-pointer"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                  Copy Email Body
+                </button>
+              </div>
+
+              <!-- Separate Copyable Subject Line -->
+              <div class="mb-4 p-3 rounded-2xl bg-[#F8FBFE] border border-[#DEEDFC] flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+                <div class="min-w-0 flex-1">
+                  <span class="form-section-title block text-[10px] mb-0.5">Email Subject</span>
+                  <div id="hvcEmailSubjectText" class="text-xs sm:text-sm font-bold text-slate-800 select-all">Let's Turn Your Design into Reality!</div>
+                </div>
+                <button 
+                  type="button" 
+                  onclick="copyHvcText('hvcEmailSubjectText', 'Email subject copied!')" 
+                  class="px-3.5 py-1.5 rounded-full bg-white hover:bg-[#EBF4FD] text-[#0456A2] border border-[#CEE4FA] text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5 shrink-0 self-start sm:self-center"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                  Copy Subject
+                </button>
+              </div>
+
+              <div class="flex items-center justify-between mb-1.5 px-1">
+                <span class="text-[11px] font-medium text-slate-400">Click inside to customize before copying</span>
+                <span class="badge-pill bg-[#F1F7FE] text-[#3A8BDA] border border-[#DCEBFC]">Editable</span>
+              </div>
+              <div 
+                id="hvcEmailPreview" 
+                contenteditable="true" 
+                spellcheck="true" 
+                class="w-full h-80 p-4 rounded-2xl bg-[#F8FBFE] hover:bg-white focus:bg-white border border-[#DEEDFC] focus:border-[#3A8BDA] font-mono-code text-xs leading-relaxed text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#3A8BDA]/25 overflow-y-auto whitespace-pre-wrap transition-all cursor-text"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-TAB 3: HVC NOTE -->
+        <div id="hvcNoteSection" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          <div class="lg:col-span-5 bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] space-y-4">
+            <div class="pb-3 border-b border-[#EDF4FC]">
+              <h3 class="text-base font-bold text-slate-800">HVC Call Note</h3>
+              <p class="text-xs text-slate-400">Fill in action taken, customer time, and DR number</p>
+            </div>
+
+            <div>
+              <label for="hvcNoteActionInput" class="form-section-title block mb-1.5 text-[#0456A2]">Action Taken</label>
+              <input 
+                type="text" 
+                id="hvcNoteActionInput" 
+                placeholder="e.g. Called Cx, left Voicemail 1 and sent follow-up email" 
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-medium"
+              />
+            </div>
+
+            <div>
+              <label for="hvcNoteCxTimeInput" class="form-section-title block mb-1.5">Cx Time</label>
+              <input 
+                type="text" 
+                id="hvcNoteCxTimeInput" 
+                placeholder="e.g. 2:30 PM EST" 
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-medium"
+              />
+            </div>
+
+            <div>
+              <label for="hvcNoteDrInput" class="form-section-title block mb-1.5">DR Number</label>
+              <input 
+                type="text" 
+                id="hvcNoteDrInput" 
+                placeholder="e.g. DR-12345678" 
+                class="soft-input w-full px-3.5 py-2.5 placeholder-slate-400 font-mono-code font-medium"
+              />
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white rounded-3xl p-5 sm:p-6 shadow-[0_8px_30px_rgb(58,139,218,0.08)] border border-[#E1EEFA] flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex items-center justify-between pb-3 mb-4 border-b border-[#EDF4FC]">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-7 h-7 rounded-lg bg-[#EBF5FE] text-[#0456A2] flex items-center justify-center font-bold text-xs">📋</div>
+                  <h3 class="text-base font-bold text-slate-800">Generated HVC Note</h3>
+                </div>
+                <button 
+                  type="button" 
+                  onclick="copyHvcText('hvcNotePreview', 'HVC note copied!')" 
+                  class="primary-btn px-4 py-2 rounded-full font-bold text-xs flex items-center gap-2 cursor-pointer"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                  Copy Note
+                </button>
+              </div>
+              <div class="flex items-center justify-between mb-1.5 px-1">
+                <span class="text-[11px] font-medium text-slate-400">Click inside to customize before copying</span>
+                <span class="badge-pill bg-[#F1F7FE] text-[#3A8BDA] border border-[#DCEBFC]">Editable</span>
+              </div>
+              <div 
+                id="hvcNotePreview" 
+                contenteditable="true" 
+                spellcheck="true" 
+                class="w-full h-64 p-4 rounded-2xl bg-[#F8FBFE] hover:bg-white focus:bg-white border border-[#DEEDFC] focus:border-[#3A8BDA] font-mono-code text-xs leading-relaxed text-slate-700 focus:outline-none focus:ring-2 focus:ring-[#3A8BDA]/25 overflow-y-auto whitespace-pre-wrap transition-all cursor-text"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
       <!-- Workspace Footer -->
       <footer class="mt-auto pt-4 border-t border-[#DCEBFC] text-center space-y-1.5 px-2">
         <p class="text-xs font-bold text-slate-700">
@@ -1570,30 +1991,37 @@
     // Regional Support Contact Data
     const REGION_CONTACTS = {
       US: {
+        phone: "1.866.207.4955",
         link: "https://www.vistaprint.com/graphic-design/dashboard",
         contact: "Phone: 1.866.207.4955\nMon – Fri 7:00 AM – 3:00 AM EST\nSat – Sun 8:00 AM – 8:00 PM EST"
       },
       UK: {
+        phone: "0800.028.6962",
         link: "https://www.vistaprint.co.uk/graphic-design/dashboard",
         contact: "Phone: 0800.028.6962\nMon – Sun 7:30 AM – 10:00 PM"
       },
       IE: {
+        phone: "1800 904 804",
         link: "https://www.vistaprint.ie/graphic-design/dashboard",
         contact: "Phone: 1800 904 804.\nMon – Sun: 7:30 AM – 10:00 PM IST"
       },
       NZ: {
+        phone: "0800.222.062",
         link: "https://www.vistaprint.co.nz/graphic-design/dashboard",
         contact: "Phone: 0800.222.062\nMon. - Fri. 10:00 AM - 12:00 AM\nSat. - Sun. 10:00 AM - 7:00 PM"
       },
       SG: {
+        phone: "1800.407.5624",
         link: "https://www.vistaprint.sg/graphic-design/dashboard",
         contact: "Phone: 1800.407.5624\nMon. - Fri. 5:00 AM - 7:00 PM\nSat. - Sun. 5:00 AM - 2:00 PM"
       },
       AU: {
+        phone: "1800.864.973",
         link: "https://www.vistaprint.com.au/graphic-design/dashboard",
         contact: "Phone: 1800.864.973\nMon. - Fri. 8:00 AM - 10:00 PM AST\nSat. - Sun. 8:00 AM – 5:00 PM AST"
       },
       CA: {
+        phone: "833.996.2067",
         link: "https://www.vistaprint.ca/graphic-design/dashboard",
         contact: "Phone: 833.996.2067\nMon – Fri 7:00 AM – 3:00 AM EST\nSat – Sun 8:00 AM – 8:00 PM EST"
       }
@@ -1736,7 +2164,10 @@
     ];
 
     // Shared State across tabs
-    let activeTab = 'home'; // 'home' | 'email' | 'cf' | 'dl' | 'market' | 'brand' | 'tz'
+    let activeTab = 'home'; // 'home' | 'email' | 'cf' | 'dl' | 'market' | 'brand' | 'tz' | 'hvc'
+    let activeHvcSubTab = 'spiels'; // 'spiels' | 'email' | 'note'
+    let activeHvcCallType = 'opening'; // 'opening' | 'vm1' | 'vm2'
+    let activeHvcScenario = 'A'; // 'A' | 'B' | 'C' | 'D'
     let sharedProduct = '';
     let sharedDocuments = [{ name: '', id: '' }];
     let isNotesOpen = false;
@@ -1772,7 +2203,8 @@
         dl: 'tabDlBtn',
         market: 'tabMarketBtn',
         brand: 'tabBrandBtn',
-        tz: 'tabTzBtn'
+        tz: 'tabTzBtn',
+        hvc: 'tabHvcBtn'
       };
 
       Object.entries(navMap).forEach(([key, btnId]) => {
@@ -1794,6 +2226,7 @@
       const marketSection = document.getElementById('marketDirectorySection');
       const brandSection = document.getElementById('brandGuidelinesSection');
       const tzSection = document.getElementById('timeZoneSection');
+      const hvcSection = document.getElementById('hvcWorkspaceSection');
 
       const emailForm = document.getElementById('emailFormSection');
       const cfForm = document.getElementById('cfFormSection');
@@ -1808,6 +2241,7 @@
       marketSection.classList.add('hidden');
       brandSection.classList.add('hidden');
       tzSection.classList.add('hidden');
+      hvcSection.classList.add('hidden');
 
       emailForm.classList.add('hidden');
       cfForm.classList.add('hidden');
@@ -1849,6 +2283,9 @@
         } else {
           renderTimeZoneCards();
         }
+      } else if (tabName === 'hvc') {
+        hvcSection.classList.remove('hidden');
+        updateAllHvcOutputs();
       }
     }
 
@@ -1893,7 +2330,7 @@
       }, 2200);
     }
 
-    // Sync Product across Email, CF, and Design Live tabs
+    // Sync Product across Email, CF, Design Live, and HVC tabs
     function syncProduct(value, source) {
       sharedProduct = value;
       if (source !== 'email') {
@@ -1906,6 +2343,10 @@
       }
       if (source !== 'dl') {
         const el = document.getElementById('dlProductInput');
+        if (el) el.value = value;
+      }
+      if (source !== 'hvc') {
+        const el = document.getElementById('hvcProductName');
         if (el) el.value = value;
       }
       refreshActiveGenerator();
@@ -1990,11 +2431,13 @@
       if (activeTab === 'email') generateEmailOutput();
       else if (activeTab === 'cf') generateCfOutput();
       else if (activeTab === 'dl') generateDlOutput();
+      else if (activeTab === 'hvc') updateAllHvcOutputs();
     }
 
     // Handle Email Template Type Switch
     function handleTemplateChange() {
       const tpl = document.getElementById('templateSelect').value;
+      const customerWrapper = document.getElementById('customerFieldWrapper');
       const productWrapper = document.getElementById('productFieldWrapper');
       const revisionWrapper = document.getElementById('revisionFieldWrapper');
       const notesWrapper = document.getElementById('notesFieldWrapper');
@@ -2002,6 +2445,7 @@
       const freeWrapper = document.getElementById('freeMessageWrapper');
       const docsWrapper = document.getElementById('documentsFieldWrapper');
 
+      customerWrapper.classList.remove('hidden');
       productWrapper.classList.remove('hidden');
       revisionWrapper.classList.remove('hidden');
       notesWrapper.classList.remove('hidden');
@@ -2014,6 +2458,15 @@
         notesWrapper.classList.add('hidden');
         docsWrapper.classList.add('hidden');
         missingWrapper.classList.remove('hidden');
+      } else if (tpl === 'submitrevision') {
+        productWrapper.classList.add('hidden');
+        revisionWrapper.classList.add('hidden');
+        notesWrapper.classList.add('hidden');
+        docsWrapper.classList.add('hidden');
+      } else if (tpl === 'lowres') {
+        revisionWrapper.classList.add('hidden');
+        notesWrapper.classList.add('hidden');
+        docsWrapper.classList.add('hidden');
       } else if (tpl === 'logo') {
         productWrapper.classList.add('hidden');
         revisionWrapper.classList.add('hidden');
@@ -2062,8 +2515,12 @@
 
       let html = '';
 
-      if (tpl === 'logo') {
-        html = `Hi, ${customer}\n\nThank you for submitting your design request!\n\nAfter reviewing your instructions, it appears that you may be looking for a logo design. We’d like to clarify that logo creation is offered through a separate service specifically tailored to help bring your brand identity to life.\n\nIf you’re interested in having a logo designed, we offer the following options:\n\n1. Free Logomaker\nvistaprint.com/logomaker/wizard?tenantName=vista_logos\n\nA free, easy-to-use DIY tool that allows you to create your own logo quickly and conveniently.\n\n2. Essential Logo Package\nvistaprint.com/design/logo-essential\n\nWork with a professional designer who will take the time to understand your business, requirements, and preferences before presenting initial logo concepts.\n\n3. Start a Contest\n99designs.com/launch/…/designs\n\nLaunch a design contest where multiple professional designers can submit logo concepts, giving you a variety of creative options to choose from.\n\nIn the meantime, we will be cancelling your current design request so you can submit a new request through the appropriate logo design service.\n\nWe truly appreciate your business and the opportunity to support your creative needs.\n\nThank you for choosing VistaPrint!\n\nRegards,\nVistaPrint’s Design Services Team\n${escapeHtml(regionData.contact)}`;
+      if (tpl === 'submitrevision') {
+        html = `Hi ${customer},\n\nThank you for choosing Vistaprint’s Design Service. We’re excited to help bring your vision to life.\n\nIt is our great pleasure to assist you with your revision request and to get track of all the modifications and revisions of your layouts we would need you to submit a FREE revision. You may follow these steps:\n\nYou may follow these steps:\n\n1. Please follow these steps to submit a revision request:\n\n2. Access your design dashboard: ${escapeHtml(regionData.link)}\n\n3. Select your project: Click on the design you wish to revise.\n\n4. Review the activity thread: Located on the left side of the page, this thread displays previous updates and messages from your designer.\n\n5. Provide your feedback: Enter your comments directly within the editor. You may leave general remarks or click on specific areas of the design to give targeted feedback.\n\nSubmit your request: After submitting your feedback, our team will work on your revision and notify you via email within 24 hours.\n\nFor more detailed instructions, please refer to: https://www.vistaprint.com/customer-care/help-center/14342788761869\n\nFiling the revisions through design services is a standardized process so everything is aligned and documented.\n\nIf you need assistance in filing for revision, you may directly call our customer service through the phone number below.\n\nYour business with us is highly appreciated. Thank you for trusting us with your design needs.\n\nRegards,\nVistaPrint's Design Services Team\n${escapeHtml(regionData.contact)}`;
+      } else if (tpl === 'lowres') {
+        html = `Hi ${customer},\n\nThank you for choosing Vistaprint!\n \nWe're excited to get started on your ${product} design! Before we begin, could you please send over a higher-resolution version of the file you attached to your request? \n\nSimply reply to this email with the high-resolution images you'd like included. This will help us ensure the best possible print quality for your order.\n \nWe look forward to your response.\n\nRegards,\nVistaPrint's Design Services Team\n${escapeHtml(regionData.contact)}`;
+      } else if (tpl === 'logo') {
+        html = `Hi ${customer},\n\nThank you for submitting your design request!\n\nAfter reviewing your instructions, it appears that you may be looking for a logo design. We’d like to clarify that logo creation is offered through a separate service specifically tailored to help bring your brand identity to life.\n\nIf you’re interested in having a logo designed, we offer the following options:\n\n1. Free Logomaker\nvistaprint.com/logomaker/wizard?tenantName=vista_logos\n\nA free, easy-to-use DIY tool that allows you to create your own logo quickly and conveniently.\n\n2. Essential Logo Package\nvistaprint.com/design/logo-essential\n\nWork with a professional designer who will take the time to understand your business, requirements, and preferences before presenting initial logo concepts.\n\n3. Start a Contest\n99designs.com/launch/…/designs\n\nLaunch a design contest where multiple professional designers can submit logo concepts, giving you a variety of creative options to choose from.\n\nIn the meantime, we will be cancelling your current design request so you can submit a new request through the appropriate logo design service.\n\nWe truly appreciate your business and the opportunity to support your creative needs.\n\nThank you for choosing VistaPrint!\n\nRegards,\nVistaPrint’s Design Services Team\n${escapeHtml(regionData.contact)}`;
       } else if (tpl === 'free') {
         const freeMsgRaw = document.getElementById('freeMessageText').value.trim();
         const freeMsg = freeMsgRaw !== '' ? escapeHtml(freeMsgRaw) : '[Message]';
@@ -2092,29 +2549,47 @@
       const docsWrapper = document.getElementById('cfDocumentsWrapper');
       const assetsWrapper = document.getElementById('cfAssetsWrapper');
 
+      // Update Call Status options: exclude "Successfully contacted the customer." for Escalate
+      const callStatusSelect = document.getElementById('cfCallStatusSelect');
+      const previousCallStatus = callStatusSelect.value;
+      const allCallStatuses = [
+        'Successfully contacted the customer.',
+        'Too early to call, sent an email instead.',
+        'Too early to call, need to reschedule.',
+        'Too late to call, sent an email instead.',
+        'Too late to call, need to reschedule.',
+        'Unable to reach, left a voicemail.',
+        'No phone details, sent an email instead.'
+      ];
+      const availableCallStatuses = action === 'escalate'
+        ? allCallStatuses.filter(status => status !== 'Successfully contacted the customer.')
+        : allCallStatuses;
+
+      callStatusSelect.innerHTML = availableCallStatuses
+        .map(status => `<option value="${escapeHtml(status)}">${escapeHtml(status)}</option>`)
+        .join('');
+
+      if (availableCallStatuses.includes(previousCallStatus)) {
+        callStatusSelect.value = previousCallStatus;
+      }
+
       const isOptionalFull = (action === 'reschedule' || action === 'handover' || action === 'escalate');
       const showFullFields = !isOptionalFull || fullDetailsChecked;
 
-      if (isOptionalFull) {
-        toggleWrapper.classList.remove('hidden');
-      } else {
-        toggleWrapper.classList.add('hidden');
+      if (toggleWrapper) {
+        toggleWrapper.classList.toggle('hidden', !isOptionalFull);
       }
-
-      if (action === 'handover' || action === 'escalate') {
-        reasonWrapper.classList.remove('hidden');
-      } else {
-        reasonWrapper.classList.add('hidden');
+      if (reasonWrapper) {
+        reasonWrapper.classList.toggle('hidden', action !== 'handover' && action !== 'escalate');
       }
-
-      if (showFullFields) {
-        productWrapper.classList.remove('hidden');
-        docsWrapper.classList.remove('hidden');
-        assetsWrapper.classList.remove('hidden');
-      } else {
-        productWrapper.classList.add('hidden');
-        docsWrapper.classList.add('hidden');
-        assetsWrapper.classList.add('hidden');
+      if (productWrapper) {
+        productWrapper.classList.toggle('hidden', !showFullFields);
+      }
+      if (docsWrapper) {
+        docsWrapper.classList.toggle('hidden', !showFullFields);
+      }
+      if (assetsWrapper) {
+        assetsWrapper.classList.toggle('hidden', !showFullFields);
       }
 
       generateCfOutput();
@@ -2128,11 +2603,15 @@
       const isOptionalFull = (action === 'reschedule' || action === 'handover' || action === 'escalate');
       const showFullFields = !isOptionalFull || fullDetailsChecked;
 
-      const reasonRaw = document.getElementById('cfReasonInput').value.trim();
-      const reason = reasonRaw !== '' ? reasonRaw : '[reason]';
+      const reasonRaw = document.getElementById('cfReasonSelect').value.trim();
+      const reason = reasonRaw !== '' ? reasonRaw : 'Callback Request';
 
       const productRaw = sharedProduct.trim();
       const product = productRaw !== '' ? productRaw : '[Product]';
+
+      const callStatusSelectEl = document.getElementById('cfCallStatusSelect');
+      const callStatusRaw = callStatusSelectEl.value.trim();
+      const callStatus = callStatusRaw !== '' ? callStatusRaw : (callStatusSelectEl.options[0]?.value || 'Successfully contacted the customer.');
 
       const notesFormatted = formatBulletList(document.getElementById('cfNotesInput').value);
 
@@ -2144,7 +2623,7 @@
       else if (action === 'escalate') headerLine = `Need to escalate due to: ${reason}`;
 
       if (!showFullFields) {
-        const simpleText = `${headerLine}\n\nNote/s:\n${notesFormatted}`;
+        const simpleText = `${headerLine}\n\nCall status: ${callStatus}\n\nNote/s:\n${notesFormatted}`;
         document.getElementById('outputPreview').textContent = simpleText;
         return;
       }
@@ -2176,7 +2655,7 @@
       const selectedHashtags = Array.from(document.querySelectorAll('.cf-hashtag-cb:checked')).map(cb => cb.value);
       const hashtagsBlock = selectedHashtags.length > 0 ? `\n\n${selectedHashtags.join('\n')}` : '';
 
-      const fullText = `${headerLine}\n\n${designActionLine}\n\nNote/s:\n${notesFormatted}\n\nDocument/s saved as:\n${docsList}\n\nAssets Used:\n• Adobe Stock Used: ${adobeStock}\n• Fonts Used: ${fonts}\n\nSoftware: ${softwareText}\n\nReference Links:\n• Google Drive: ${driveLink}${hashtagsBlock}`;
+      const fullText = `${headerLine}\n\n${designActionLine}\n\nCall status: ${callStatus}\n\nNote/s:\n${notesFormatted}\n\nDocument/s saved as:\n${docsList}\n\nAssets Used:\n• Adobe Stock Used: ${adobeStock}\n• Fonts Used: ${fonts}\n\nSoftware: ${softwareText}\n\nReference Links:\n• Google Drive: ${driveLink}${hashtagsBlock}`;
 
       document.getElementById('outputPreview').textContent = fullText;
     }
@@ -2497,6 +2976,326 @@
       });
     }
 
+    // ==========================================
+    // HVC DESIGN CUSTOMERS WORKSPACE LOGIC
+    // ==========================================
+    function formatHvcMonthDay(dateStr) {
+      if (!dateStr) return '[month and date]';
+      const parts = dateStr.split('-').map(Number);
+      if (parts.length !== 3) return dateStr;
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      return new Intl.DateTimeFormat('en-US', {
+        month: 'long',
+        day: 'numeric'
+      }).format(d);
+    }
+
+    function getHvcContext() {
+      const custRaw = document.getElementById('hvcCustomerName')?.value.trim() || '';
+      const prodRaw = (document.getElementById('hvcProductName')?.value.trim() || sharedProduct.trim());
+      const dateRaw = document.getElementById('hvcOrderDate')?.value || '';
+      const region = document.getElementById('hvcRegionSelect')?.value || 'US';
+      const designerRaw = document.getElementById('hvcDesignerName')?.value.trim() || '';
+      const regionData = REGION_CONTACTS[region] || REGION_CONTACTS['US'];
+
+      return {
+        customer: custRaw !== '' ? custRaw : "[Customer's Name]",
+        customerEmailName: custRaw !== '' ? custRaw : "{customer name}",
+        product: prodRaw !== '' ? prodRaw : "[product]",
+        productEmail: prodRaw !== '' ? prodRaw : "(product)",
+        monthDayFormatted: formatHvcMonthDay(dateRaw),
+        region,
+        regionData,
+        designer: designerRaw !== '' ? designerRaw : "[your name]"
+      };
+    }
+
+    function switchHvcSubTab(subTab) {
+      activeHvcSubTab = subTab;
+      const map = {
+        spiels: { btn: 'hvcSubTabSpielsBtn', sec: 'hvcSpielsSection' },
+        email: { btn: 'hvcSubTabEmailBtn', sec: 'hvcEmailSection' },
+        note: { btn: 'hvcSubTabNoteBtn', sec: 'hvcNoteSection' }
+      };
+
+      Object.entries(map).forEach(([key, ids]) => {
+        const btn = document.getElementById(ids.btn);
+        const sec = document.getElementById(ids.sec);
+        if (!btn || !sec) return;
+        if (key === subTab) {
+          btn.classList.add('active', 'bg-[#0456A2]', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-[#F4F9FE]', 'text-slate-600', 'border', 'border-[#D7E6F6]');
+          sec.classList.remove('hidden');
+        } else {
+          btn.classList.remove('active', 'bg-[#0456A2]', 'text-white', 'shadow-sm');
+          btn.classList.add('bg-[#F4F9FE]', 'text-slate-600', 'border', 'border-[#D7E6F6]');
+          sec.classList.add('hidden');
+        }
+      });
+
+      updateAllHvcOutputs();
+    }
+
+    function selectHvcCallType(callType) {
+      activeHvcCallType = callType;
+      document.querySelectorAll('.hvc-calltype-btn').forEach(btn => {
+        const key = btn.getAttribute('data-calltype');
+        if (key === callType) {
+          btn.classList.add('active', 'bg-[#0456A2]', 'text-white', 'shadow-sm');
+          btn.classList.remove('bg-[#F4F9FE]', 'text-slate-600', 'border', 'border-[#D7E6F6]');
+        } else {
+          btn.classList.remove('active', 'bg-[#0456A2]', 'text-white', 'shadow-sm');
+          btn.classList.add('bg-[#F4F9FE]', 'text-slate-600', 'border', 'border-[#D7E6F6]');
+        }
+      });
+      renderHvcSpiels();
+    }
+
+    function selectHvcScenario(scenarioKey) {
+      activeHvcScenario = scenarioKey;
+      document.querySelectorAll('.hvc-scenario-btn').forEach(btn => {
+        const key = btn.getAttribute('data-scenario');
+        const labelDiv = btn.querySelector('div:first-child');
+
+        if (key === scenarioKey) {
+          btn.classList.add('active', 'bg-[#0456A2]', 'text-white', 'border-[#0456A2]', 'shadow-sm');
+          btn.classList.remove('bg-[#F8FBFE]', 'text-slate-700', 'border-[#DCEBFC]');
+          if (labelDiv) {
+            labelDiv.classList.remove('text-[#3A8BDA]');
+            labelDiv.classList.add('opacity-85');
+          }
+        } else {
+          btn.classList.remove('active', 'bg-[#0456A2]', 'text-white', 'border-[#0456A2]', 'shadow-sm');
+          btn.classList.add('bg-[#F8FBFE]', 'text-slate-700', 'border-[#DCEBFC]');
+          if (labelDiv) {
+            labelDiv.classList.add('text-[#3A8BDA]');
+            labelDiv.classList.remove('opacity-85');
+          }
+        }
+      });
+
+      renderHvcSpiels();
+    }
+
+    function renderHvcSpiels() {
+      const ctx = getHvcContext();
+      const openingEl = document.getElementById('hvcOpeningSpielBox');
+      const scenariosPanel = document.getElementById('hvcScenariosPanel');
+      const container = document.getElementById('hvcScenarioDisplayContainer');
+      if (!openingEl || !container) return;
+
+      if (activeHvcCallType === 'vm1') {
+        if (scenariosPanel) scenariosPanel.classList.add('hidden');
+        openingEl.textContent = `Hi ${ctx.customer}, this is ${ctx.designer} from the VistaPrint Design Services Team. I was calling about your design project, and since I wasn't able to reach you right now, I'll try giving you a callback in about 5 to 10 minutes. Looking forward to speaking with you soon. Have a great day!`;
+      } else if (activeHvcCallType === 'vm2') {
+        if (scenariosPanel) scenariosPanel.classList.add('hidden');
+        openingEl.textContent = `Hi ${ctx.customer}, this is ${ctx.designer} from the VistaPrint Design Services Team.\n\nI wanted to follow up on your design request from ${ctx.monthDayFormatted}. I noticed you haven't placed your ${ctx.product} design order yet. Do you need help checking out your order? I’d be happy to guide you!\n\nI’ll also be sending you an email with the details, so feel free to reply at your convenience. If you have any questions, you can also reach our Customer Service team at ${ctx.regionData.phone}.\n\nLooking forward to hearing from you soon. Have a great day!`;
+      } else {
+        if (scenariosPanel) scenariosPanel.classList.remove('hidden');
+        openingEl.innerHTML = `Hi ${escapeHtml(ctx.customer)}, this is ${escapeHtml(ctx.designer)} from the VistaPrint Design Services Team. Is this a good time to talk?\n\n<em class="italic font-normal text-slate-500">Customer responds</em>\n\nJust a quick heads-up that this call is recorded for training and quality purposes.\n\nI'm just calling to follow up on the design we worked on for you for ${escapeHtml(ctx.product)} on ${escapeHtml(ctx.monthDayFormatted)}. I noticed you haven't placed your order yet, so I wanted to check if you've had a chance to look at the design and see if there's anything else we can help you with.`;
+      }
+
+      const scenarios = {
+        A: {
+          title: "Scenario A: Customer is Ready to Order / No Further Assistance Needed",
+          designer: `"That's great! If everything looks good and you're ready to order, I can help walk you through the checkout process. And of course, if you have any last-minute questions or need any small changes to the design, just let me know!"`,
+          actions: [
+            "Offer help with placing the order.",
+            "Answer any last-minute questions.",
+            "Check if the customer needs anything else before ending the call."
+          ],
+          closings: [
+            {
+              label: "Closing",
+              text: `“Awesome! Glad to hear everything looks good! I'll go ahead and help you add the item to your cart so you can conveniently proceed with checkout.”\n\n“Since you're moving forward with your design order today, you may receive a short survey after our call. We'd truly appreciate it if you could take a moment to share your experience with us. Your feedback helps us understand what we're doing well and where we can continue to improve. Thank you for your time and for choosing us!”\n\nThanks for your time, ${ctx.customer}, and thanks for choosing VistaPrint! Enjoy the rest of your day!`
+            }
+          ]
+        },
+        B: {
+          title: "Scenario B: Customer Needs Further Design Assistance",
+          designer: `"Of course! We'd be happy to help. Can you tell me a little more about what you'd like to change or what you're having trouble with?"`,
+          actions: [
+            "Understand what the customer needs.",
+            "Provide design assistance or discuss possible changes.",
+            "If more work is needed, explain what happens next and when they can expect an update. (Proceed to do a walkthrough to making a Design Revision Request)"
+          ],
+          closings: [
+            {
+              label: "Closing",
+              text: `"Thanks for explaining that! We'll take care of the changes we've discussed, and I'll send you an email summarizing everything so you have it for reference.\n\nThanks again for your time, ${ctx.customer}. We'll be happy to help you get everything just right. Have a great day!"`
+            }
+          ]
+        },
+        C: {
+          title: "Scenario C: Customer is Not Ready to Order",
+          designer: `"No worries at all! Just so I understand, is there anything that's holding you back from placing the order, or are you simply not ready to move forward just yet?"`,
+          actions: [
+            "Find out if there's a particular concern or reason for the delay.",
+            "Offer help if the concern is something the designer can address.",
+            "Give the customer space and avoid making them feel pressured to order."
+          ],
+          closings: [
+            {
+              label: "Closing",
+              text: `That's absolutely fine! Take your time, and feel free to revisit the design whenever you're ready. I'll send you a quick email with the details so you can easily find them when you need them.\n\nAnd if you have any questions or need help in the meantime, you can always reach our Customer Service team at ${ctx.regionData.phone}.\n\nThanks for your time, ${ctx.customer}. Have a lovely day!`
+            }
+          ]
+        },
+        D: {
+          title: "Scenario D: Customer is Unavailable or Not Willing to Talk",
+          designer: `"No problem! I understand you're probably busy. Would there be a better time for me to give you a call? Also, is this still the best number to reach you?"`,
+          actions: [
+            "Ask if the customer would prefer a callback.",
+            "Confirm their preferred date and time.",
+            "Verify their contact number.",
+            "Document the agreed callback schedule."
+          ],
+          closings: [
+            {
+              label: "Closing – If Customer Agrees to a Callback",
+              text: `"Sounds good! I'll make a note of that and give you a call at your preferred time. I'll also send you a quick email so you have our details handy.\n\nThanks, ${ctx.customer}! Talk to you soon. Have a great day!"`
+            },
+            {
+              label: "Alternative Closing – If Customer Declines a Callback",
+              text: `"That's totally fine! I'll just send you an email with our contact details in case you need anything or have questions later on.\n\nThanks for your time, ${ctx.customer}. Take care and enjoy the rest of your day!"`
+            }
+          ]
+        }
+      };
+
+      const sc = scenarios[activeHvcScenario] || scenarios.A;
+      const closingsHtml = sc.closings.map(c => `
+        <div class="p-4 rounded-2xl bg-white border border-[#DCEBFC] space-y-2">
+          <span class="text-xs font-bold text-slate-800 block">${escapeHtml(c.label)}</span>
+          <div class="text-xs sm:text-[13px] leading-relaxed text-[#0456A2] whitespace-pre-wrap font-bold">${escapeHtml(c.text)}</div>
+        </div>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="p-4 sm:p-5 rounded-2xl bg-[#F8FBFE] border border-[#DEEDFC] space-y-4">
+          <div class="pb-2 border-b border-[#E2EEFA]">
+            <h4 class="text-sm font-bold text-[#0456A2]">${escapeHtml(sc.title)}</h4>
+          </div>
+
+          <!-- Designer Dialogue -->
+          <div class="p-4 rounded-2xl bg-white border border-[#DCEBFC] space-y-2">
+            <span class="text-xs font-bold text-slate-800 block">Designer</span>
+            <div class="text-xs sm:text-[13px] leading-relaxed text-[#0456A2] whitespace-pre-wrap font-bold">${escapeHtml(sc.designer)}</div>
+          </div>
+
+          <!-- Designer Action Checklist -->
+          <div class="p-4 rounded-2xl bg-white border border-[#DCEBFC] space-y-2">
+            <span class="text-xs font-bold text-slate-800 block">Designer Action</span>
+            <ul class="space-y-1.5 text-xs text-slate-600">
+              ${sc.actions.map(act => `
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#3A8BDA] mt-1.5 shrink-0"></span>
+                  <span>${escapeHtml(act)}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+
+          <!-- Closing Spiel(s) -->
+          <div class="space-y-3">
+            ${closingsHtml}
+          </div>
+
+          <!-- Post-Call Actions -->
+          <div class="p-4 rounded-2xl bg-white border border-[#DCEBFC] space-y-2">
+            <span class="text-xs font-bold text-slate-800 block">Post-Call Actions</span>
+            <p class="text-xs text-slate-500 font-medium">After each call, make sure to:</p>
+            <ol class="list-decimal list-inside space-y-1.5 text-xs text-slate-600">
+              <li>Send a follow-up email summarizing the conversation and any agreed next steps.</li>
+              <li>Document the call outcome and any feedback shared by the customer.</li>
+              <li>Record callback details if another call has been scheduled.</li>
+              <li>Note any pending concerns or design changes that still need attention.</li>
+              <li>Update the tracking system with the appropriate call outcome.</li>
+            </ol>
+          </div>
+        </div>
+      `;
+    }
+
+    function generateHvcEmailOutput() {
+      const ctx = getHvcContext();
+      const dashboardUrl = escapeHtml(ctx.regionData.link);
+      const offersLink = `<a href="https://www.vistaprint.com/offers" target="_blank" rel="noopener noreferrer" class="text-[#0456A2] underline font-semibold">https://www.vistaprint.com/offers</a>`;
+
+      const html = `Dear ${escapeHtml(ctx.customerEmailName)},\n\nThank you for using VistaPrint for your design needs.\n\nWe noticed you haven't placed your ${escapeHtml(ctx.productEmail)} design order yet. Do you need help checking out your order?\n\nYou can view all your recent design requests here: ${dashboardUrl}\n\nYou can also explore our latest promotions here: ${offersLink}\n\nIf there's anything else we can help you with, simply reply to this email or call our Customer Care Specialists.\n\nSincerely,\nThe VistaPrint Design Services Team\n${escapeHtml(ctx.regionData.contact)}`;
+
+      const previewEl = document.getElementById('hvcEmailPreview');
+      if (previewEl) previewEl.innerHTML = html;
+    }
+
+    function generateHvcNoteOutput() {
+      const actionTaken = document.getElementById('hvcNoteActionInput')?.value.trim() || '[insert action taken]';
+      const cxTime = document.getElementById('hvcNoteCxTimeInput')?.value.trim() || '[insert time]';
+      const drNumber = document.getElementById('hvcNoteDrInput')?.value.trim() || '[DR Number]';
+
+      const noteText = `HVC CONVERSION PROJECT\n\nAction taken: ${actionTaken}\n\nCx Time: ${cxTime}\n\nDR: ${drNumber}`;
+
+      const previewEl = document.getElementById('hvcNotePreview');
+      if (previewEl) previewEl.textContent = noteText;
+    }
+
+    function updateAllHvcOutputs() {
+      renderHvcSpiels();
+      generateHvcEmailOutput();
+      generateHvcNoteOutput();
+    }
+
+    function copyHvcText(elementId, message) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      copyTextToClipboard(el.innerText, () => {
+        showToast('hvcToastBox', 'hvcToastMsg', message);
+      });
+    }
+
+    function copyHvcRichEmail() {
+      const previewEl = document.getElementById('hvcEmailPreview');
+      if (!previewEl) return;
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(previewEl);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      let copied = false;
+      try {
+        copied = document.execCommand('copy');
+      } catch (e) {
+        copied = false;
+      }
+      selection.removeAllRanges();
+      if (copied) {
+        showToast('hvcToastBox', 'hvcToastMsg', 'HVC email copied to clipboard!');
+        return;
+      }
+      copyTextToClipboard(previewEl.innerText, () => {
+        showToast('hvcToastBox', 'hvcToastMsg', 'HVC email copied to clipboard!');
+      });
+    }
+
+    function resetHvcConfig() {
+      document.getElementById('hvcCustomerName').value = '';
+      document.getElementById('hvcProductName').value = '';
+      document.getElementById('hvcOrderDate').value = '';
+      document.getElementById('hvcRegionSelect').value = 'US';
+      document.getElementById('hvcNoteActionInput').value = '';
+      document.getElementById('hvcNoteCxTimeInput').value = '';
+      document.getElementById('hvcNoteDrInput').value = '';
+
+      sharedProduct = '';
+      document.getElementById('productName').value = '';
+      document.getElementById('cfProductInput').value = '';
+      document.getElementById('dlProductInput').value = '';
+
+      selectHvcCallType('opening');
+      selectHvcScenario('A');
+      switchHvcSubTab('spiels');
+    }
+
     // Reset Functions
     function resetEmailConfig() {
       document.getElementById('templateSelect').value = 'fresh';
@@ -2524,7 +3323,8 @@
     function resetCfConfig() {
       document.getElementById('cfTicketSelect').value = 'complete';
       document.getElementById('cfFullDetailsCheckbox').checked = false;
-      document.getElementById('cfReasonInput').value = '';
+      document.getElementById('cfReasonSelect').value = 'Callback Request';
+      document.getElementById('cfCallStatusSelect').value = 'Successfully contacted the customer.';
       document.getElementById('cfNotesInput').value = '';
       document.getElementById('cfAdobeStockInput').value = '';
       document.getElementById('cfFontsInput').value = '';
@@ -2587,11 +3387,30 @@
       document.getElementById('tabMarketBtn').addEventListener('click', () => switchTab('market'));
       document.getElementById('tabBrandBtn').addEventListener('click', () => switchTab('brand'));
       document.getElementById('tabTzBtn').addEventListener('click', () => switchTab('tz'));
+      document.getElementById('tabHvcBtn').addEventListener('click', () => switchTab('hvc'));
 
       // Reset Buttons
       document.getElementById('resetBtn').addEventListener('click', resetEmailConfig);
       document.getElementById('cfResetBtn').addEventListener('click', resetCfConfig);
       document.getElementById('dlResetBtn').addEventListener('click', resetDlConfig);
+      document.getElementById('hvcResetBtn').addEventListener('click', resetHvcConfig);
+
+      // HVC Design Customers Listeners
+      const savedDesigner = localStorage.getItem('designerHubDesignerName');
+      if (savedDesigner) {
+        document.getElementById('hvcDesignerName').value = savedDesigner;
+      }
+      document.getElementById('hvcDesignerName').addEventListener('input', e => {
+        localStorage.setItem('designerHubDesignerName', e.target.value);
+        updateAllHvcOutputs();
+      });
+      document.getElementById('hvcCustomerName').addEventListener('input', updateAllHvcOutputs);
+      document.getElementById('hvcProductName').addEventListener('input', e => syncProduct(e.target.value, 'hvc'));
+      document.getElementById('hvcOrderDate').addEventListener('input', updateAllHvcOutputs);
+      document.getElementById('hvcRegionSelect').addEventListener('change', updateAllHvcOutputs);
+      document.getElementById('hvcNoteActionInput').addEventListener('input', generateHvcNoteOutput);
+      document.getElementById('hvcNoteCxTimeInput').addEventListener('input', generateHvcNoteOutput);
+      document.getElementById('hvcNoteDrInput').addEventListener('input', generateHvcNoteOutput);
 
       // Email Configuration Listeners
       document.getElementById('templateSelect').addEventListener('change', handleTemplateChange);
@@ -2642,7 +3461,8 @@
       // CF Note Configuration Listeners
       document.getElementById('cfTicketSelect').addEventListener('change', handleCfTicketChange);
       document.getElementById('cfFullDetailsCheckbox').addEventListener('change', handleCfTicketChange);
-      document.getElementById('cfReasonInput').addEventListener('input', generateCfOutput);
+      document.getElementById('cfReasonSelect').addEventListener('change', generateCfOutput);
+      document.getElementById('cfCallStatusSelect').addEventListener('change', generateCfOutput);
       document.getElementById('cfProductInput').addEventListener('input', e => syncProduct(e.target.value, 'cf'));
       document.getElementById('cfNotesInput').addEventListener('input', generateCfOutput);
       document.getElementById('cfAddDocBtn').addEventListener('click', addSharedDoc);
